@@ -20,7 +20,7 @@ export default function Header() {
 
     <Next to="/next">
       <div>
-      <FaRegListAlt size={30} style={{color: '#009999', }}/>
+      <FaRegListAlt size={30} style={{ color: '#009999', }}/>
         <strong>Next Books</strong>
       </div>
     </Next>

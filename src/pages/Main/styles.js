@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const BookList = styled.ul`
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-gap: 20px;
-list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  list-style: none;
 
 li {
   display: flex;
@@ -53,11 +53,46 @@ img {
       text-align: center;
       font-weight: bold;
       margin: 4px;
+    }
+  }
+}
 
+`;
+
+
+export const AddButton = styled.button`
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 21px;
+  background: #009999;
+  border: 0;
+  padding: 0 15px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+
+  justify-content: center;
+  position: relative;
+  text-align: center;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+    &:hover {
+      background: ${darken(0.03, '#009999')};
     }
 
-  }
+  span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 4px;
+      margin-left: 10px;
 
-}
+    }
 
 `;

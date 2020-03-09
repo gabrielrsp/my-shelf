@@ -1,12 +1,42 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container, Form, SubmitButton } from './styles';
 
 function Add() {
   return (
-    <div >
-      <h1>Add</h1>
-    </div>
+    <Container >
+      <h1>Add Book to the Shelf</h1>
+
+      <Form onSubmit={() => {}}>
+        <input
+          type="text"
+          placeholder="Book Name"
+        />
+
+        <input
+          type="text"
+          placeholder="Author"
+        />
+
+        <input
+          type="text"
+          placeholder="URL image"
+        />
+
+        <input
+          type="text"
+          placeholder="Description"
+        />
+
+
+
+      </Form>
+
+      <SubmitButton disabled >
+          Save
+      </SubmitButton>
+
+    </Container>
   );
 }
 

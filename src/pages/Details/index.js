@@ -2,12 +2,12 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-function Book() {
+function Details() {
   return (
     <div >
-    <h1>Book</h1>
+    <h1>Details</h1>
   </div>
   );
 }
 
-export default Book;
+export default Details;
