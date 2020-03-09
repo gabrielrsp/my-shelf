@@ -23,7 +23,7 @@ function Add() {
           placeholder="URL image"
         />
 
-        <input
+        <textarea
           type="text"
           placeholder="Description"
         />

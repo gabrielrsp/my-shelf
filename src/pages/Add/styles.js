@@ -33,6 +33,12 @@ export const Form = styled.form`
     margin: 8px;
   }
 
+  textarea {
+    padding: 10px 15px 60px 10px;
+    resize: vertical;
+    margin: 8px;
+  }
+
 `;
 
 export const SubmitButton = styled.button.attrs({
