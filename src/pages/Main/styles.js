@@ -30,6 +30,11 @@ img {
   max-width: 250px;
 }
 
+a {
+  align-self: center;
+  max-width: 250px;
+}
+
   > strong {
     font-size: 16px;
     line-height: 20px;
@@ -51,6 +56,7 @@ img {
     border-radius: 4px;
     overflow: hidden;
     margin-top: auto;
+    padding: 2px;
 
     &:hover {
       background: ${darken(0.03, '#009999')};
@@ -104,3 +110,90 @@ export const AddButton = styled.button`
     }
 
 `;
+
+//////////////////  ADD BOOK  //////////////////////
+
+
+export const Container = styled.div`
+    max-width: 700px;
+    background: #FFF;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba (0, 0, 0.1);
+    padding: 20px;
+    margin: 30px auto;
+    margin-bottom : 0px;
+
+    h1 {
+      display: flex;
+      justify-content: center;
+      font-size: 25px;
+      display: flex;
+      flex-direction: row;
+      color: #009999;
+      margin-bottom: 20px;
+    }
+
+`;
+
+export const Form = styled.form`
+  margin: 30px;
+  margin-bottom: 3px;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    flex: 1;
+    padding: 10px 15px;
+    margin: 8px;
+  }
+
+  textarea {
+    padding: 10px 15px 60px 10px;
+    resize: vertical;
+    margin: 8px;
+  }
+
+
+
+`;
+
+export const SubmitButton = styled.button.attrs({
+  type: 'submit',
+})`
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  background: #009999;
+  border: 0;
+  padding: 3px 16px;
+  margin-top: 7px;
+  margin-bottom: 25px;
+  margin-right: 8px;
+  border-radius: 4px;
+  float: right;
+
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  align-self: center;
+
+  &:hover {
+      background: ${darken(0.03, '#009999')};
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 1px;
+      margin-left: 8px;
+
+    }
+
+`;
+
+
+

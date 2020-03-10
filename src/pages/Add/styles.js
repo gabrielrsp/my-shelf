@@ -53,11 +53,16 @@ export const SubmitButton = styled.button.attrs({
   background: #009999;
   border: 0;
   padding: 4px 20px;
-  margin-top: 10px;
+  margin-top: 9px;
   margin-bottom: 25px;
-  margin-right: 40px;
+  margin-right: 9px;
   border-radius: 4px;
   float: right;
+
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  align-self: flex-end;
 
   &:hover {
       background: ${darken(0.03, '#009999')};

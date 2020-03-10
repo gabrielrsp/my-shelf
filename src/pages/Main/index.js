@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BookList, AddButton, StyledLink } from './styles';
+import { BookList, StyledLink, Container, Form, SubmitButton  } from './styles';
 
 import { FaPlus } from "react-icons/fa";
 
@@ -8,22 +8,41 @@ function Main() {
   return (
     <>
 
-    <AddButton >
-      <StyledLink to="/add"
-      style={{ textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              color: '#fff'
-               }}>
-        <FaPlus color='#fff' size={22} />
+<Container >
+      <h1>Add Book to the Shelf</h1>
+      <Form onSubmit={() => {}}>
+        <input
+          type="text"
+          placeholder="Book Name"
+        />
+        <input
+          type="text"
+          placeholder="Author"
+        />
+        <input
+          type="text"
+          placeholder="URL image"
+        />
+        <textarea
+          type="text"
+          placeholder="Notes"
+        />
+        <SubmitButton disabled  >
+          <FaPlus color='#fff' size={22} />
+
           <span>Add Book</span>
-      </StyledLink>
-    </AddButton>
+        </SubmitButton>
+      </Form>
+    </Container>
+
+
 
     <BookList>
       <li>
-        <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
-        alt="book"/>
+        <a href="details">
+          <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
+          alt="book"/>
+        </a>
         <strong>a real good chinese book</strong>
         <button type="button">
         <StyledLink to="/details" >
@@ -32,8 +51,10 @@ function Main() {
         </button>
       </li>
       <li>
-        <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
-        alt="book"/>
+        <a href="details">
+          <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
+          alt="book"/>
+        </a>
         <strong>a real good chinese book</strong>
         <button type="button">
         <StyledLink to="/details" >
@@ -42,8 +63,10 @@ function Main() {
         </button>
       </li>
       <li>
-        <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
-        alt="book"/>
+        <a href="details">
+          <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
+          alt="book"/>
+        </a>
         <strong>a real good chinese book</strong>
         <button type="button">
         <StyledLink to="/details" >
@@ -52,8 +75,10 @@ function Main() {
         </button>
       </li>
       <li>
-        <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
-        alt="book"/>
+        <a href="details">
+          <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
+          alt="book"/>
+        </a>
         <strong>a real good chinese book</strong>
         <button type="button">
         <StyledLink to="/details" >
@@ -62,8 +87,10 @@ function Main() {
         </button>
       </li>
       <li>
-        <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
-        alt="book"/>
+        <a href="details">
+          <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
+          alt="book"/>
+        </a>
         <strong>a real good chinese book</strong>
         <button type="button">
         <StyledLink to="/details" >
@@ -72,8 +99,10 @@ function Main() {
         </button>
       </li>
       <li>
-        <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
-        alt="book"/>
+        <a href="details">
+          <img src="https://m.media-amazon.com/images/I/81kB6lKq1aL._AC_UY218_ML3_.jpg"
+          alt="book"/>
+        </a>
         <strong>a real good chinese book</strong>
         <button type="button">
         <StyledLink to="/details" >
