@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { BookList, AddButton } from './styles';
-import { Link } from 'react-router-dom';
+import { BookList, AddButton, StyledLink } from './styles';
+
 import { FaPlus } from "react-icons/fa";
 
 function Main() {
@@ -9,7 +9,7 @@ function Main() {
     <>
 
     <AddButton >
-      <Link to="/add"
+      <StyledLink to="/add"
       style={{ textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
@@ -17,7 +17,7 @@ function Main() {
                }}>
         <FaPlus color='#fff' size={22} />
           <span>Add Book</span>
-      </Link>
+      </StyledLink>
     </AddButton>
 
     <BookList>
@@ -26,7 +26,9 @@ function Main() {
         alt="book"/>
         <strong>a real good chinese book</strong>
         <button type="button">
+        <StyledLink to="/details" >
         <span>Details</span>
+        </StyledLink>
         </button>
       </li>
       <li>
@@ -34,7 +36,9 @@ function Main() {
         alt="book"/>
         <strong>a real good chinese book</strong>
         <button type="button">
+        <StyledLink to="/details" >
         <span>Details</span>
+        </StyledLink>
         </button>
       </li>
       <li>
@@ -42,7 +46,9 @@ function Main() {
         alt="book"/>
         <strong>a real good chinese book</strong>
         <button type="button">
+        <StyledLink to="/details" >
         <span>Details</span>
+        </StyledLink>
         </button>
       </li>
       <li>
@@ -50,7 +56,9 @@ function Main() {
         alt="book"/>
         <strong>a real good chinese book</strong>
         <button type="button">
+        <StyledLink to="/details" >
         <span>Details</span>
+        </StyledLink>
         </button>
       </li>
       <li>
@@ -58,7 +66,9 @@ function Main() {
         alt="book"/>
         <strong>a real good chinese book</strong>
         <button type="button">
+        <StyledLink to="/details" >
         <span>Details</span>
+        </StyledLink>
         </button>
       </li>
       <li>
@@ -66,7 +76,9 @@ function Main() {
         alt="book"/>
         <strong>a real good chinese book</strong>
         <button type="button">
+        <StyledLink to="/details" >
         <span>Details</span>
+        </StyledLink>
         </button>
       </li>
 

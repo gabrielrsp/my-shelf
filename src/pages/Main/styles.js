@@ -1,5 +1,16 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { darken } from 'polished';
+
+
+export const StyledLink = styled(Link)`
+text-decoration: none;
+display: flex;
+align-items: center;
+color: #fff;
+`;
+
 
 export const BookList = styled.ul`
   display: grid;
@@ -40,9 +51,6 @@ img {
     border-radius: 4px;
     overflow: hidden;
     margin-top: auto;
-
-    display: flex;
-    align-items: center;
 
     &:hover {
       background: ${darken(0.03, '#009999')};
