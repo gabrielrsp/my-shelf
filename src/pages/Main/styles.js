@@ -18,16 +18,21 @@ export const BookList = styled.ul`
   grid-gap: 20px;
   list-style: none;
 
+
 li {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: rgba(0,0,0,0.0300);
   border-radius: 4px;
   padding: 20px;
 
 img {
+  margin-bottom: 3px;
   align-self: center;
   max-width: 250px;
+  width: 175px;
+  height: 260px;
+
 }
 
 a {
@@ -116,7 +121,7 @@ export const AddButton = styled.button`
 
 export const Container = styled.div`
     max-width: 700px;
-    background: #FFF;
+   /* background: #FFF;*/
     border-radius: 4px;
     box-shadow: 0 0 20px rgba (0, 0, 0.1);
     padding: 20px;
