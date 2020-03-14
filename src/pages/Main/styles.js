@@ -27,7 +27,7 @@ li {
   padding: 20px;
 
 img {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   align-self: center;
   max-width: 250px;
   width: 175px;
