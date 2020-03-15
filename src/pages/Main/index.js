@@ -84,11 +84,11 @@ function Main() {
           {
             book.map( book => (
               <li key={book}>
-                <a href="details">
+                <a href={`/details/${book.newName}`}>
                   <img src={book.newUrl} alt="book"/>
                 </a>
                   <button type="button">
-                    <StyledLink to="/details" >
+                    <StyledLink to={`/details/${book.newName}`}>
                     <span>Details</span>
                     </StyledLink>
                   </button>

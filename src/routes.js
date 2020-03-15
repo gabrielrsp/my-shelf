@@ -11,9 +11,9 @@ export default function Routes() {
   return (
       <Switch>
         <Route path="/" exact component={Main} />
-        <Route path="/details" component={Details} />
         <Route path="/add" component={Add} />
         <Route path="/next" component={Next} />
+        <Route path="/details/:name/" component={Details} />
       </Switch>
   );
 }

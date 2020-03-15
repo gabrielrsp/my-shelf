@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { darken } from 'polished';
 
-
 export const StyledLink = styled(Link)`
 text-decoration: none;
 display: flex;
@@ -32,7 +31,6 @@ img {
   max-width: 250px;
   width: 175px;
   height: 260px;
-
 }
 
 a {
@@ -137,6 +135,14 @@ export const Container = styled.div`
       color: #009999;
       margin-bottom: 20px;
     }
+
+    img {
+  margin-bottom: 5px;
+  align-self: center;
+  max-width: 250px;
+  width: 175px;
+  height: 260px;
+}
 
 `;
 
