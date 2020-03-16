@@ -12,6 +12,9 @@ function Main() {
   const [newNotes, setNewNotes] = useState('');
 
   function handleAdd (e) {
+
+    if (newName){
+
     e.preventDefault()
 
     setBook([ ...book,
@@ -26,6 +29,8 @@ function Main() {
     setNewAuthor('');
     setNewUrl('');
     setNewNotes('');
+  } else
+    alert('Book name is Required!');
 
   };
 
@@ -50,6 +55,7 @@ function Main() {
               placeholder="Book Name"
               value={newName}
               name="name"
+              required
               onChange={e => setNewName(e.target.value)}
             />
             <input
@@ -84,9 +90,17 @@ function Main() {
           {
             book.map( book => (
               <li key={book}>
-                <a href={`/details/${book.newName}`}>
-                  <img src={book.newUrl} alt="book"/>
-                </a>
+                {
+                  book.newUrl ?
+                  <a href={`/details/${book.newName}`}>
+                    <img src={book.newUrl} alt="book"/>
+                  </a>
+                  :
+                  <>
+                    <img src='https://static.thenounproject.com/png/132226-200.png' alt="book"/>
+                    <strong>{book.newName}</strong>
+                  </>
+                }
                   <button type="button">
                     <StyledLink to={`/details/${book.newName}`}>
                     <span>Details</span>

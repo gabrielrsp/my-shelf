@@ -44,6 +44,7 @@ a {
     color: #333;
     margin-top: 8px;
     margin-bottom: 5px;
+
 }
 
   > span {
@@ -137,12 +138,12 @@ export const Container = styled.div`
     }
 
     img {
-  margin-bottom: 5px;
-  align-self: center;
-  max-width: 250px;
-  width: 175px;
-  height: 260px;
-}
+      margin-bottom: 5px;
+      align-self: center;
+      max-width: 250px;
+      width: 175px;
+      height: 260px;
+    }
 
 `;
 

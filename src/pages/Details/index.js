@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container  } from '../Main/styles';
-
+import { Container, EditButton  } from './styles';
 
 function Details({ match }) {
 
@@ -10,11 +9,7 @@ function Details({ match }) {
   useEffect(() => {
     const data = localStorage.getItem('book-list');
     if(data){
-
-      setBook( JSON.parse(data)
-
-      );
-
+      setBook( JSON.parse(data));
     }
   }, []);
 
@@ -23,18 +18,21 @@ function Details({ match }) {
 
   const bookInfo = {...bookMatch}
 
-
   return (
     <>
       <Container >
-        <h1>{match.params.name}</h1>
-        <img src={bookInfo.newUrl} alt="book"/>
-        <h2>{bookInfo.newAuthor}</h2>
-        <h4>{bookInfo.newNotes}</h4>
 
+        <div >
+          <img src={bookInfo.newUrl} alt="book"/>
+            <div>
+              <h2> <span>Name:</span> {bookInfo.newName}</h2>
+              <h2><span>Author:</span> {bookInfo.newAuthor}</h2>
+              <EditButton>Edit</EditButton>
+            </div>
+        </div>
+        <h2>Notes</h2>
+        <p>{bookInfo.newNotes}</p>
       </Container>
-
-
     </>
   );
 }
