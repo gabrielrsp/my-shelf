@@ -38,12 +38,14 @@ a {
   max-width: 250px;
 }
 
-  > strong {
+   strong {
     font-size: 16px;
     line-height: 20px;
     color: #333;
-    margin-top: 8px;
+    margin-top: 15px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: center
 
 }
 

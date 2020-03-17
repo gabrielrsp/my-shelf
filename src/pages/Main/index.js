@@ -97,8 +97,12 @@ function Main() {
                   </a>
                   :
                   <>
-                    <img src='https://static.thenounproject.com/png/132226-200.png' alt="book"/>
-                    <strong>{book.newName}</strong>
+                    <img style={ { marginTop:'auto', marginLeft:'25px', width: '150px',height: '150px'}}
+                          alt="book"
+                          src='https://static.thenounproject.com/png/111370-200.png'
+                    />
+                    <strong
+                     >{book.newName}</strong>
                   </>
                 }
                   <button type="button">
