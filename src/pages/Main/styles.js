@@ -10,13 +10,11 @@ align-items: center;
 color: #fff;
 `;
 
-
 export const BookList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
-
 
 li {
   display: flex;
@@ -35,7 +33,6 @@ img {
 
 a {
   align-self: center;
-  max-width: 250px;
 }
 
    strong {
@@ -50,22 +47,60 @@ a {
 }
 
   > span {
+    flex: 1;
+    text-align: center;
     font-size: 21px;
     font-weight: bold;
     margin: 5px 0 20px;
   }
 
-  button {
-    background: #009999;
+
+
+  div {
+  display: grid;
+  }
+
+}
+
+`;
+
+
+export const DetailsButton = styled.button`
+  background: #009999;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: auto;
+  margin-top: 5px;
+  padding: 2px;
+
+  &:hover {
+    background: ${darken(0.03, '#009999')};
+  }
+
+  span {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    margin: 4px;
+  }
+
+`;
+
+
+export const DeleteButton = styled.button`
+    background: #992600;
     color: #fff;
     border: 0;
     border-radius: 4px;
     overflow: hidden;
     margin-top: auto;
-    padding: 2px;
+    margin-top: 5px;
+    padding: 4px;
 
     &:hover {
-      background: ${darken(0.03, '#009999')};
+      background: ${darken(0.03, '#992600')};
     }
 
     span {
@@ -74,55 +109,13 @@ a {
       font-weight: bold;
       margin: 4px;
     }
-  }
-}
-
 `;
 
-
-export const AddButton = styled.button`
-  display: flex;
-  align-items: center;
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  font-size: 21px;
-  background: #009999;
-  border: 0;
-  padding: 0 15px;
-  margin-bottom: 25px;
-  border-radius: 4px;
-
-  justify-content: center;
-  position: relative;
-  text-align: center;
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-
-    &:hover {
-      background: ${darken(0.03, '#009999')};
-    }
-
-  span {
-      flex: 1;
-      text-align: center;
-      font-weight: bold;
-      margin: 4px;
-      margin-left: 10px;
-
-    }
-
-`;
 
 //////////////////  ADD BOOK  //////////////////////
 
-
 export const Container = styled.div`
     max-width: 700px;
-   /* background: #FFF;*/
     border-radius: 4px;
     box-shadow: 0 0 20px rgba (0, 0, 0.1);
     padding: 20px;
@@ -137,14 +130,6 @@ export const Container = styled.div`
       flex-direction: row;
       color: #009999;
       margin-bottom: 20px;
-    }
-
-    img {
-      margin-bottom: 5px;
-      align-self: center;
-      max-width: 250px;
-      width: 175px;
-      height: 260px;
     }
 
 `;
@@ -166,8 +151,6 @@ export const Form = styled.form`
     resize: vertical;
     margin: 8px;
   }
-
-
 
 `;
 

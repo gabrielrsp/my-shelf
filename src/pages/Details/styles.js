@@ -18,9 +18,9 @@ export const Container = styled.div`
       }
     }
 
-     div {
-        display: flex;
-        margin-bottom: 10px;
+    div {
+      display: flex;
+      margin-bottom: 10px;
         div {
           margin-left: 20px;
           display: block;
@@ -29,8 +29,7 @@ export const Container = styled.div`
           list-style: none;
           margin-top: 20px;
           }
-      }
-
+    }
 
     img {
       margin-bottom: 5px;
@@ -42,8 +41,7 @@ export const Container = styled.div`
     }
 `;
 
-
-export const EditButton = styled.button.attrs({type: 'submit',})`
+export const CustomButton = styled.button.attrs({type: 'submit',})`
     display: flex;
     color: #fff;
     text-align: center;
@@ -55,9 +53,9 @@ export const EditButton = styled.button.attrs({type: 'submit',})`
     border-radius: 4px;
     justify-content: right;
 
-  &:hover {
-      background: ${darken(0.03, '#009999')};
-    }
+    &:hover {
+        background: ${darken(0.03, '#009999')};
+      }
 
     span {
       flex: 1;

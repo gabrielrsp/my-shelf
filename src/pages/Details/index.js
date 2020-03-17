@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, EditButton  } from './styles';
+import { Container, CustomButton  } from './styles';
 
 function Details({ match }) {
 
   const [book, setBook] = useState([]);
-
 
   useEffect(() => {
     const data = localStorage.getItem('book-list');
@@ -27,7 +26,7 @@ function Details({ match }) {
             <div>
               <h2> <span>Name:</span> {bookInfo.newName}</h2>
               <h2><span>Author:</span> {bookInfo.newAuthor}</h2>
-              <EditButton>Edit</EditButton>
+              <CustomButton>Edit</CustomButton>
             </div>
         </div>
         <h2>Notes</h2>

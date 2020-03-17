@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookList, StyledLink, Container, Form, SubmitButton  } from './styles';
+import { BookList, StyledLink, Container, Form, SubmitButton, DetailsButton, DeleteButton  } from './styles';
 import { FaPlus } from "react-icons/fa";
 
 function Main() {
@@ -10,6 +10,7 @@ function Main() {
   const [newAuthor, setNewAuthor] = useState('');
   const [newUrl, setNewUrl] = useState('');
   const [newNotes, setNewNotes] = useState('');
+
 
   function handleAdd (e) {
 
@@ -33,6 +34,10 @@ function Main() {
     alert('Book name is Required!');
 
   };
+
+   function handleDelete(bookItem) {
+      setBook( book.filter(b => b !== bookItem))
+    }
 
   useEffect(() => {
     const data = localStorage.getItem('book-list');
@@ -105,11 +110,19 @@ function Main() {
                      >{book.newName}</strong>
                   </>
                 }
-                  <button type="button">
-                    <StyledLink to={`/details/${book.newName}`}>
-                    <span>Details</span>
-                    </StyledLink>
-                  </button>
+                  <div>
+                    <DetailsButton type="button">
+                      <StyledLink to={`/details/${book.newName}`}>
+                      <span>Details</span>
+                      </StyledLink>
+                    </DetailsButton>
+                    <DeleteButton className="delete" type="button" onClick={()=> handleDelete(book) }>
+                      <span>
+                        Delete
+                      </span>
+                    </DeleteButton>
+                  </div>
+
               </li>
             ))
           }
