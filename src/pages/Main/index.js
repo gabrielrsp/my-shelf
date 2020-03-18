@@ -147,9 +147,16 @@ function Main() {
             book.map( book => (
               <li key={book} index={book}>
                 {
-                  book.newUrl ?
+                book.newUrl ?
                   <a href={`/details/${book.newName}`}>
-                    <img src={book.newUrl} alt="book"/>
+                    <img
+                      src={book.newUrl} alt="book"
+                      onError={
+                        (e)=>{e.target.onerror = null;
+                        e.target.src="https://static.thenounproject.com/png/111370-200.png"
+                        e.target.style = 'marginTop: auto; marginLeft: 25px; width: 150px; height: 152px '
+                        }}
+                    />
                   </a>
                   :
                   <>
@@ -157,25 +164,20 @@ function Main() {
                           alt="book"
                           src='https://static.thenounproject.com/png/111370-200.png'
                     />
-                    <strong
-                  >{book.newName}</strong>
+                    <strong>{book.newName}</strong>
                   </>
                 }
                   <div>
                     <DetailsButton type="button">
                       <StyledLink to={`/details/${book.newName}`}>
-                      <span>Details</span>
+                        <span>Details</span>
                       </StyledLink>
                     </DetailsButton>
-                     <UpdateButton type="button" onClick={()=> handleEdit(book)}>
-                     <span>
-                         Update
-                       </span>
-                     </UpdateButton>
+                    <UpdateButton type="button" onClick={()=> handleEdit(book)}>
+                      <span>Update</span>
+                    </UpdateButton>
                     <DeleteButton type="button" onClick={()=> handleDelete(book) }>
-                      <span>
-                        Delete
-                      </span>
+                      <span>Delete</span>
                     </DeleteButton>
                   </div>
               </li>

@@ -17,21 +17,30 @@ function Details({ match }) {
 
   const bookInfo = {...bookMatch}
 
+
+
   return (
     <>
       <Container >
 
         <div >
           {
-            book.newUrl ?
-              <img src={book.newUrl} alt="book"/>
+            bookInfo.newUrl ?
+              <img src={bookInfo.newUrl} alt="book"
+              onError={
+                (e)=>{e.target.onerror = null;
+                e.target.src="https://static.thenounproject.com/png/111370-200.png"
+                e.target.style = 'marginTop: auto; marginLeft: 25px; width: 150px; height: 153px '
+                e.target.name = 'book.newName'
+                }
+              }
+               />
                 :
                 <>
                   <img  style={ { marginTop:'auto', marginLeft:'25px', width: '150px',height: '150px'}}
                         alt="book"
                         src='https://static.thenounproject.com/png/111370-200.png'
                   />
-                  <strong>{book.newName}</strong>
                 </>
           }
           <div>
