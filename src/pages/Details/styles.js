@@ -21,18 +21,19 @@ export const Container = styled.div`
     div {
       display: flex;
       margin-bottom: 10px;
+      margin-top: 10px;
         div {
+
           margin-left: 20px;
           display: block;
           grid-template-columns: repeat(1, 200px) ;
           grid-gap: 10px;
           list-style: none;
-          margin-top: 20px;
           }
     }
 
     img {
-      margin-bottom: 5px;
+
       align-self: center;
       max-width: 250px;
       width: 175px;

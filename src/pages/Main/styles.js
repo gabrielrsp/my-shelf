@@ -39,8 +39,8 @@ a {
     font-size: 16px;
     line-height: 20px;
     color: #333;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center
 
@@ -63,6 +63,7 @@ a {
 }
 
 `;
+
 
 
 export const DetailsButton = styled.button`
@@ -89,8 +90,8 @@ export const DetailsButton = styled.button`
 `;
 
 
-export const DeleteButton = styled.button`
-    background: #992600;
+export const UpdateButton = styled.button`
+    background: #997300;
     color: #fff;
     border: 0;
     border-radius: 4px;
@@ -100,7 +101,31 @@ export const DeleteButton = styled.button`
     padding: 4px;
 
     &:hover {
-      background: ${darken(0.03, '#992600')};
+      background: ${darken(0.03, '#997300')};
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 4px;
+    }
+`;
+
+
+
+export const DeleteButton = styled.button`
+    background: #99004d;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: auto;
+    margin-top: 5px;
+    padding: 4px;
+
+    &:hover {
+      background: ${darken(0.03, '#99004d')};
     }
 
     span {
@@ -152,6 +177,13 @@ export const Form = styled.form`
     margin: 8px;
   }
 
+  div {
+  display: flex;
+  justify-content: flex-end;
+  }
+
+
+
 `;
 
 export const SubmitButton = styled.button.attrs({
@@ -179,6 +211,45 @@ export const SubmitButton = styled.button.attrs({
 
   &:hover {
       background: ${darken(0.03, '#009999')};
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 1px;
+      margin-left: 8px;
+
+    }
+
+`;
+
+
+export const EditButton = styled.button.attrs({
+  type: 'submit',
+})`
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  background: #997300;
+  border: 0;
+  padding: 3px 10px;
+  margin-top: 7px;
+  margin-bottom: 25px;
+  margin-right: 8px;
+  border-radius: 4px;
+  float: right;
+
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  align-self: center;
+
+  &:hover {
+      background: ${darken(0.03, '#997300')};
     }
 
     span {

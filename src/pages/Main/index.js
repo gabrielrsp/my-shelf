@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { BookList, StyledLink, Container, Form, SubmitButton, DetailsButton, DeleteButton  } from './styles';
-import { FaPlus } from "react-icons/fa";
+import { BookList, StyledLink, Container, Form, SubmitButton, EditButton, DetailsButton, DeleteButton, UpdateButton  } from './styles';
+import { FaPlus, FaEdit, FaTimes  } from "react-icons/fa";
+
 
 function Main() {
 
@@ -11,6 +12,7 @@ function Main() {
   const [newUrl, setNewUrl] = useState('');
   const [newNotes, setNewNotes] = useState('');
 
+  const[box, setBox] = useState();
 
   function handleAdd (e) {
 
@@ -32,23 +34,51 @@ function Main() {
     setNewNotes('');
   } else
     alert('Book name is Required!');
+    e.preventDefault()
 
   };
 
-   function handleDelete(bookItem) {
+    function handleUpdate(bookItem){}
+
+    function handleClean(e){
+      e.preventDefault()
+      setNewName('');
+      setNewAuthor('');
+      setNewUrl('');
+      setNewNotes('');
+      toggleBox()
+    }
+
+
+    function toggleBox() {
+      setBox(!box)
+    }
+
+    function handleEdit(bookItem){
+
+      setBox(true)
+
+      setNewName(bookItem.newName);
+      setNewAuthor(bookItem.newAuthor);
+      setNewUrl(bookItem.newUrl);
+      setNewNotes(bookItem.newNotes);
+
+    }
+
+    function handleDelete(bookItem) {
       setBook( book.filter(b => b !== bookItem))
     }
 
-  useEffect(() => {
-    const data = localStorage.getItem('book-list');
-    if(data){
-      setBook(JSON.parse(data));
-    }
-  }, []);
+    useEffect(() => {
+      const data = localStorage.getItem('book-list');
+      if(data){
+        setBook(JSON.parse(data));
+      }
+    }, []);
 
-  useEffect(() => {
-    localStorage.setItem('book-list', JSON.stringify(book));
-  }, [book]);
+    useEffect(() => {
+      localStorage.setItem('book-list', JSON.stringify(book));
+    }, [book]);
 
   return (
     <>
@@ -60,7 +90,7 @@ function Main() {
               placeholder="Book Name"
               value={newName}
               name="name"
-              required
+
               onChange={e => setNewName(e.target.value)}
             />
             <input
@@ -84,17 +114,38 @@ function Main() {
               name="notes"
               onChange={e => setNewNotes(e.target.value)}
             />
-            <SubmitButton onClick={handleAdd}  >
+            {
+            !box ?
+              <SubmitButton onClick={handleAdd}  >
               <FaPlus color='#fff' size={22} />
               <span>Add Book</span>
             </SubmitButton>
+            : <></>
+            }
+
+          {
+            box ?
+                <div>
+                  <EditButton  onClick={handleUpdate}  >
+                    <FaEdit color='#fff' size={22} />
+                    <span>Save Changes</span>
+                  </EditButton>
+                    <EditButton  onClick={handleClean}  >
+                      <FaTimes color='#fff' size={22} />
+                      <span>Cancel</span>
+                    </EditButton>
+                </div>
+                :
+                <></>
+          }
+
           </Form>
       </Container>
 
       <BookList>
           {
             book.map( book => (
-              <li key={book}>
+              <li key={book} index={book}>
                 {
                   book.newUrl ?
                   <a href={`/details/${book.newName}`}>
@@ -107,7 +158,7 @@ function Main() {
                           src='https://static.thenounproject.com/png/111370-200.png'
                     />
                     <strong
-                     >{book.newName}</strong>
+                  >{book.newName}</strong>
                   </>
                 }
                   <div>
@@ -116,13 +167,17 @@ function Main() {
                       <span>Details</span>
                       </StyledLink>
                     </DetailsButton>
-                    <DeleteButton className="delete" type="button" onClick={()=> handleDelete(book) }>
+                     <UpdateButton type="button" onClick={()=> handleEdit(book)}>
+                     <span>
+                         Update
+                       </span>
+                     </UpdateButton>
+                    <DeleteButton type="button" onClick={()=> handleDelete(book) }>
                       <span>
                         Delete
                       </span>
                     </DeleteButton>
                   </div>
-
               </li>
             ))
           }
