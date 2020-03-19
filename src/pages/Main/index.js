@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { BookList, StyledLink, Container, Form, SubmitButton, EditButton, DetailsButton, DeleteButton, UpdateButton  } from './styles';
 import { FaPlus, FaEdit, FaTimes  } from "react-icons/fa";
 
@@ -32,16 +32,18 @@ function Main() {
     setNewAuthor('');
     setNewUrl('');
     setNewNotes('');
+
   } else
     alert('Book name is Required!');
     e.preventDefault()
 
   };
 
-    function handleUpdate(bookItem){}
+    function handleUpdate(){}
 
     function handleClean(e){
       e.preventDefault()
+
       setNewName('');
       setNewAuthor('');
       setNewUrl('');
@@ -66,7 +68,18 @@ function Main() {
     }
 
     function handleDelete(bookItem) {
-      setBook( book.filter(b => b !== bookItem))
+
+      const r = window.confirm("Are you sure you want to dele this book?")
+
+      if(r){
+        setBook( book.filter(b => b !== bookItem))
+        setNewName('');
+        setNewAuthor('');
+        setNewUrl('');
+        setNewNotes('');
+        toggleBox()
+        setBox(false)
+      }
     }
 
     useEffect(() => {
@@ -79,6 +92,8 @@ function Main() {
     useEffect(() => {
       localStorage.setItem('book-list', JSON.stringify(book));
     }, [book]);
+
+    const bookSize = useMemo(() => book.length, [book])
 
   return (
     <>
@@ -140,7 +155,15 @@ function Main() {
           }
 
           </Form>
+          {
+            bookSize >1 || bookSize === 0 ?
+            <h3>You have {bookSize} books</h3>
+            :
+            <h3>You have {bookSize} book</h3>
+          }
+
       </Container>
+
 
       <BookList>
           {

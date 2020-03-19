@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, CustomButton  } from './styles';
+import { Container } from './styles';
 
 function Details({ match }) {
 
@@ -16,8 +16,6 @@ function Details({ match }) {
   const bookMatch = book.find( ({ newName }) => newName === match.params.name );
 
   const bookInfo = {...bookMatch}
-
-
 
   return (
     <>
@@ -48,7 +46,7 @@ function Details({ match }) {
               <h2>
                 <span>Author:</span> {bookInfo.newAuthor}
               </h2>
-              <CustomButton>Edit</CustomButton>
+
           </div>
         </div>
         <h2>Notes</h2>

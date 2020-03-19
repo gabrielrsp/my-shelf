@@ -157,6 +157,16 @@ export const Container = styled.div`
       margin-bottom: 20px;
     }
 
+    h3 {
+      display: flex;
+      justify-content: center;
+      font-size: 22px;
+      margin-right: 11px;
+      flex-direction: row;
+      color: #009999;
+      margin-bottom: 20px;
+    }
+
 `;
 
 export const Form = styled.form`
