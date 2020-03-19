@@ -148,24 +148,29 @@ function Main() {
               <li key={book} index={book}>
                 {
                 book.newUrl ?
+                <>
                   <a href={`/details/${book.newName}`}>
                     <img
                       src={book.newUrl} alt="book"
                       onError={
                         (e)=>{e.target.onerror = null;
                         e.target.src="https://static.thenounproject.com/png/111370-200.png"
-                        e.target.style = 'marginTop: auto; marginLeft: 25px; width: 150px; height: 152px '
+                        e.target.style = 'margin-top: 73px; margin-bottom: 40px; marginLeft: 25px; width: 150px; height: 152px '
                         }}
                     />
                   </a>
+                    <strong>{book.newName}</strong>
+                    </>
                   :
                   <>
-                    <img style={ { marginTop:'auto', marginLeft:'25px', width: '150px',height: '150px'}}
+                  <a href={`/details/${book.newName}`}>
+                    <img style={ { marginTop:'75px', marginBottom:'40px', marginLeft:'25px', width: '150px',height: '150px'}}
                           alt="book"
                           src='https://static.thenounproject.com/png/111370-200.png'
-                    />
-                    <strong>{book.newName}</strong>
-                  </>
+                          />
+                  </a>
+                          <strong>{book.newName}</strong>
+                    </>
                 }
                   <div>
                     <DetailsButton type="button">

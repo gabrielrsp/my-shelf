@@ -24,6 +24,7 @@ li {
   padding: 20px;
 
 img {
+
   margin-bottom: 5px;
   align-self: center;
   max-width: 250px;
@@ -39,7 +40,6 @@ a {
     font-size: 16px;
     line-height: 20px;
     color: #333;
-    margin-top: 25px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center
