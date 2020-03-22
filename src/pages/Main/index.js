@@ -34,7 +34,6 @@ function Main() {
       id
     }]);
 
-
     setNewName('');
     setNewAuthor('');
     setNewUrl('');
@@ -74,9 +73,6 @@ function Main() {
       destObj.newNotes = newNotes
       destObj.id = Math.floor(Math.random() * 700);
 
-      const res = data.filter( b => b.id !== secData.id )
-      console.log(res)
-
       setBook([ ...data.filter( b => b.id !== secData.id ),
         destObj
      ]);
@@ -92,6 +88,11 @@ function Main() {
       setNewUrl(bookItem.newUrl);
       setNewNotes(bookItem.newNotes);
       setId(bookItem.id);
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
 
     }
 
@@ -137,6 +138,7 @@ function Main() {
     }, [book]);
 
     const bookSize = useMemo(() => book.length, [book])
+
 
   return (
     <>
