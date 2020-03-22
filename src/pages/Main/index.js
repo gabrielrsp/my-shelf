@@ -5,7 +5,6 @@ import { FaPlus, FaEdit, FaTimes  } from "react-icons/fa";
 function Main() {
 
   const [book, setBook] = useState([]);
-
   const [newName, setNewName] = useState('');
   const [newAuthor, setNewAuthor] = useState('');
   const [newUrl, setNewUrl] = useState('');
@@ -20,10 +19,20 @@ function Main() {
 
     e.preventDefault()
 
-    //create validation for duplicate ID's
-    const id = Math.floor(Math.random() * 700);
+    let id = Math.floor(Math.random() * 700);
 
-    //const IdValid = book.forEach( b => { if(b.id === id)return false } )
+    //validation for duplicate ID' and set limit for book amount
+    for(let i= 0; i<book.length; i++){
+      if(id === book[i].id){
+          console.log('igual a'+ id + '!')
+          if(book.length >= 4){
+            window.alert("You reached the limit of books!")
+            return 0
+          }else
+          id = Math.floor(Math.random() * 700 );
+          i=0;
+      }
+    }
 
     setBook([ ...book,
       {
@@ -150,7 +159,6 @@ function Main() {
               placeholder="Book Name"
               value={newName}
               name="name"
-
               onChange={e => setNewName(e.target.value)}
             />
             <input
@@ -213,7 +221,7 @@ function Main() {
       <BookList>
           {
             book.map( book => (
-              <li key={book} >
+              <li key={book.id} >
                 {
                 book.newUrl ?
                 <>
