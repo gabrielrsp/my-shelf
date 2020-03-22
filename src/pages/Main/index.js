@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { BookList, StyledLink, Container, Form, SubmitButton, EditButton, DetailsButton, DeleteButton, UpdateButton  } from './styles';
 import { FaPlus, FaEdit, FaTimes  } from "react-icons/fa";
 
-
 function Main() {
 
   const [book, setBook] = useState([]);
@@ -11,6 +10,7 @@ function Main() {
   const [newAuthor, setNewAuthor] = useState('');
   const [newUrl, setNewUrl] = useState('');
   const [newNotes, setNewNotes] = useState('');
+  const [id, setId] = useState('');
 
   const[box, setBox] = useState();
 
@@ -20,26 +20,80 @@ function Main() {
 
     e.preventDefault()
 
+    //create validation for duplicate ID's
+    const id = Math.floor(Math.random() * 700);
+
+    //const IdValid = book.forEach( b => { if(b.id === id)return false } )
+
     setBook([ ...book,
       {
       newName,
       newAuthor,
       newUrl,
-      newNotes
+      newNotes,
+      id
     }]);
+
 
     setNewName('');
     setNewAuthor('');
     setNewUrl('');
     setNewNotes('');
+    setId('')
 
   } else
     alert('Book name is Required!');
     e.preventDefault()
-
   };
 
-    function handleUpdate(){}
+    function handleUpdate(e){
+
+      e.preventDefault()
+      const data = [...book];
+      const index = data.findIndex(obj => data.indexOf(obj) === book.indexOf(obj));
+
+      let secData = {...data[index]}
+
+      secData.newName =  newName
+      secData.newAuthor = newAuthor
+      secData.newUrl = newUrl
+      secData.newNotes = newNotes
+      secData.id = id
+
+      let newObj = {...secData}
+      let arr = []
+
+      data.forEach((b) => arr.push(b))
+
+      const currentObj = arr.find(obj => obj.newName === newObj.newName);
+      const destObj = {...currentObj}
+
+      destObj.newName =  newName
+      destObj.newAuthor = newAuthor
+      destObj.newUrl = newUrl
+      destObj.newNotes = newNotes
+      destObj.id = Math.floor(Math.random() * 700);
+
+      const res = data.filter( b => b.id !== secData.id )
+      console.log(res)
+
+      setBook([ ...data.filter( b => b.id !== secData.id ),
+        destObj
+     ]);
+
+      handleClean(e)
+    }
+
+    function handleEdit(bookItem){
+
+      setBox(true)
+      setNewName(bookItem.newName);
+      setNewAuthor(bookItem.newAuthor);
+      setNewUrl(bookItem.newUrl);
+      setNewNotes(bookItem.newNotes);
+      setId(bookItem.id);
+
+    }
 
     function handleClean(e){
       e.preventDefault()
@@ -48,23 +102,12 @@ function Main() {
       setNewAuthor('');
       setNewUrl('');
       setNewNotes('');
+      setId('')
       toggleBox()
     }
 
-
     function toggleBox() {
       setBox(!box)
-    }
-
-    function handleEdit(bookItem){
-
-      setBox(true)
-
-      setNewName(bookItem.newName);
-      setNewAuthor(bookItem.newAuthor);
-      setNewUrl(bookItem.newUrl);
-      setNewNotes(bookItem.newNotes);
-
     }
 
     function handleDelete(bookItem) {
@@ -141,11 +184,12 @@ function Main() {
           {
             box ?
                 <div>
-                  <EditButton  onClick={handleUpdate}  >
+                  <EditButton onClick={handleUpdate}  >
                     <FaEdit color='#fff' size={22} />
                     <span>Save Changes</span>
                   </EditButton>
-                    <EditButton  onClick={handleClean}  >
+
+                    <EditButton onClick={handleClean}  >
                       <FaTimes color='#fff' size={22} />
                       <span>Cancel</span>
                     </EditButton>
@@ -164,11 +208,10 @@ function Main() {
 
       </Container>
 
-
       <BookList>
           {
             book.map( book => (
-              <li key={book} index={book}>
+              <li key={book} >
                 {
                 book.newUrl ?
                 <>
