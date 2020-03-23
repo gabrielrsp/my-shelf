@@ -7,7 +7,8 @@ Here you can input all the book informations, select an url image for the book, 
 
 ![](MyShelfDemo.gif)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies Used
+   HTML, CSS, Javascript - React
 
 ## Run Project Locally
 
