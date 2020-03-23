@@ -1,6 +1,6 @@
 # My Shelf
 
-This project is build for those who always wanted a place to store the collection of books they have already read, and who always wanted to re-read some of the most remarkable and quotes in a easy and quickly way getting onlythe most important quotes underlines and annotations from these books.
+This project is build for those who always wanted a place to store the collection of books they have already read, and who always wanted to re-read some of the most remarkable quotes in a easy and quickly way, getting only the most important quotes underlines and annotations from these books.
 Here you can input all the books information and select a url image for the book, and the most important, you can edit you notes easily. 
 
 ## Demo
