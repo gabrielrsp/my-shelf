@@ -12,6 +12,10 @@ Here you can input all the book informations, select an url image for the book, 
 
 ## Run Project Locally
 
+Clone or fork this repository,
+
+Assuming you already have Node.JS and Yarn installed,
+
 In the project directory, you can run:
 
 ### `yarn install`
