@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { BookList, StyledLink, Container, Form, SubmitButton, EditButton, DetailsButton, DeleteButton, UpdateButton  } from './styles';
+import { BookList, Container, Form, SubmitButton, UpdateButton  } from './styles';
 import { FaPlus, FaEdit, FaTimes  } from "react-icons/fa";
+import BookItem from '../../components/BookItem'
 
 function Main() {
 
@@ -8,6 +9,7 @@ function Main() {
   const [newName, setNewName] = useState('');
   const [newAuthor, setNewAuthor] = useState('');
   const [newUrl, setNewUrl] = useState('');
+
   const [newNotes, setNewNotes] = useState('');
   const [id, setId] = useState('');
 
@@ -182,6 +184,7 @@ function Main() {
               name="notes"
               onChange={e => setNewNotes(e.target.value)}
             />
+
             {
             !box ?
               <SubmitButton onClick={handleAdd}  >
@@ -194,15 +197,15 @@ function Main() {
           {
             box ?
                 <div>
-                  <EditButton onClick={handleUpdate}  >
+                  <UpdateButton onClick={handleUpdate}  >
                     <FaEdit color='#fff' size={22} />
                     <span>Save Changes</span>
-                  </EditButton>
+                  </UpdateButton>
 
-                    <EditButton onClick={handleClean}  >
+                    <UpdateButton onClick={handleClean}  >
                       <FaTimes color='#fff' size={22} />
                       <span>Cancel</span>
-                    </EditButton>
+                    </UpdateButton>
                 </div>
                 :
                 <></>
@@ -221,47 +224,12 @@ function Main() {
       <BookList>
           {
             book.map( book => (
-              <li key={book.id} >
-                {
-                book.newUrl ?
-                <>
-                  <a href={`/details/${book.newName}`}>
-                    <img
-                      src={book.newUrl} alt="book"
-                      onError={
-                        (e)=>{e.target.onerror = null;
-                        e.target.src="https://static.thenounproject.com/png/111370-200.png"
-                        e.target.style = 'margin-top: 73px; margin-bottom: 40px; marginLeft: 25px; width: 150px; height: 152px '
-                        }}
-                    />
-                  </a>
-                    <strong>{book.newName}</strong>
-                    </>
-                  :
-                  <>
-                  <a href={`/details/${book.newName}`}>
-                    <img style={ { marginTop:'75px', marginBottom:'40px', marginLeft:'25px', width: '150px',height: '150px'}}
-                          alt="book"
-                          src='https://static.thenounproject.com/png/111370-200.png'
-                          />
-                  </a>
-                          <strong>{book.newName}</strong>
-                    </>
-                }
-                  <div>
-                    <DetailsButton type="button">
-                      <StyledLink to={`/details/${book.newName}`}>
-                        <span>Details</span>
-                      </StyledLink>
-                    </DetailsButton>
-                    <UpdateButton type="button" onClick={()=> handleEdit(book)}>
-                      <span>Update</span>
-                    </UpdateButton>
-                    <DeleteButton type="button" onClick={()=> handleDelete(book) }>
-                      <span>Delete</span>
-                    </DeleteButton>
-                  </div>
-              </li>
+              <BookItem
+              key={book.id}
+              book={book}
+              onDelete={() => {handleDelete(book)}}
+              onEdit={() => {handleEdit(book)}}
+              />
             ))
           }
       </BookList>

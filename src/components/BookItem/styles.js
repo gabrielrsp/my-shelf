@@ -54,15 +54,86 @@ a {
     margin: 5px 0 20px;
   }
 
+
   div {
   display: grid;
   }
+
 }
 
 `;
 
+export const DetailsButton = styled.button`
+  background: #009999;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: auto;
+  margin-top: 5px;
+  padding: 2px;
 
-//////////////////  ADD BOOK FORM  //////////////////////
+  &:hover {
+    background: ${darken(0.03, '#009999')};
+  }
+
+  span {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    margin: 4px;
+  }
+
+`;
+
+
+export const EditButton = styled.button`
+    background: #997300;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: auto;
+    margin-top: 5px;
+    padding: 4px;
+
+    &:hover {
+      background: ${darken(0.03, '#997300')};
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 4px;
+    }
+`;
+
+
+export const DeleteButton = styled.button`
+    background: #99004d;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: auto;
+    margin-top: 5px;
+    padding: 4px;
+
+    &:hover {
+      background: ${darken(0.03, '#99004d')};
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 4px;
+    }
+`;
+
+
+//////////////////  ADD BOOK  //////////////////////
 
 export const Container = styled.div`
     max-width: 700px;
