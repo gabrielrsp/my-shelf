@@ -7,26 +7,28 @@ export default function BookItem({book, onEdit, onDelete }) {
     {
     book.newUrl ?
     <>
-      <a href={`/details/${book.newName}`}>
-        <img
-          src={book.newUrl} alt="book"
-          onError={
-            (e)=>{e.target.onerror = null;
-            e.target.src="https://static.thenounproject.com/png/111370-200.png"
-            e.target.style = 'margin-top: 73px; margin-bottom: 40px; marginLeft: 25px; width: 150px; height: 152px '
-            }}
-        />
-      </a>
+      <StyledLink to={`/details/${book.newName}`}>
+          <img
+            src={book.newUrl} alt="book"
+            onError={
+              (e)=>{e.target.onerror = null;
+                e.target.src="https://static.thenounproject.com/png/111370-200.png"
+                e.target.style = 'margin-top: 73px; margin-bottom: 40px; marginLeft: 25px; width: 150px; height: 152px '
+              }}
+          />
+      </StyledLink>
         <strong>{book.newName}</strong>
         </>
       :
       <>
-      <a href={`/details/${book.newName}`}>
-        <img style={ { marginTop:'75px', marginBottom:'40px', marginLeft:'25px', width: '150px',height: '150px'}}
-              alt="book"
-              src='https://static.thenounproject.com/png/111370-200.png'
-              />
-      </a>
+      <StyledLink to={`/details/${book.newName}`}>
+        <a href={`/details/${book.newName}`}>
+          <img style={ { marginTop:'75px', marginBottom:'40px', marginLeft:'25px', width: '150px',height: '150px'}}
+                alt="book"
+                src='https://static.thenounproject.com/png/111370-200.png'
+                />
+        </a>
+      </StyledLink>
       <strong>{book.newName}</strong>
       </>
     }
