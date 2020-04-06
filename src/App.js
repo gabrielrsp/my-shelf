@@ -4,10 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
 import Routes from './routes';
+import history from './services/history';
 
 function App() {
   return(
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Header />
       <Routes />
       <GlobalStyle />

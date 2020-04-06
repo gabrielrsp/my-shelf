@@ -22,12 +22,10 @@ export default function BookItem({book, onEdit, onDelete }) {
       :
       <>
       <StyledLink to={`/details/${book.newName}`}>
-        <a href={`/details/${book.newName}`}>
           <img style={ { marginTop:'75px', marginBottom:'40px', marginLeft:'25px', width: '150px',height: '150px'}}
                 alt="book"
                 src='https://static.thenounproject.com/png/111370-200.png'
                 />
-        </a>
       </StyledLink>
       <strong>{book.newName}</strong>
       </>

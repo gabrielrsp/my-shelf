@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { BookList, Container, Form, SubmitButton, UpdateButton } from './styles';
 import { FaPlus, FaEdit, FaTimes } from "react-icons/fa";
 import BookItem from '../../components/BookItem'
+import api from '../../services/api';
+
 
 function Main() {
 
@@ -23,18 +25,8 @@ function Main() {
 
       let id = Math.floor(Math.random() * 700);
 
-      //validation for duplicate ID' and set limit for book amount
-      for (let i = 0; i < book.length; i++) {
-        if (id === book[i].id) {
-          console.log('igual a' + id + '!')
-          if (book.length >= 4) {
-            window.alert("You reached the limit of books!")
-            return 0
-          } else
-            id = Math.floor(Math.random() * 700);
-          i = 0;
-        }
-      }
+      id = Math.floor(Math.random() * 9999999);
+
 
       setBook([...book,
       {
@@ -137,7 +129,7 @@ function Main() {
 
   }, [] );
 
-  function handleDelete(bookItem) {
+    const handleDelete = useCallback( bookItem => {
 
     const r = window.confirm("Are you sure you want to dele this book?")
 
@@ -150,7 +142,7 @@ function Main() {
       toggleBox()
       setBox(false)
     }
-  }
+  }, [book, toggleBox]);
 
   useEffect(() => {
     const data = localStorage.getItem('book-list');
