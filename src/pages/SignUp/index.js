@@ -5,7 +5,7 @@ function SignUp() {
 
   return (
     <>
-        <h1>Sign In</h1>
+        <h1>Sign Up</h1>
         <form>
         <input placeholder="Full Name"/>
           <input type="email" placeholder="Email"/>

@@ -9,9 +9,9 @@ export default function Header() {
 
   return (
     <Container>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" >
         <div>
-          <FaBook size={35} style={{color: '#009999'}}/>
+          <FaBook size={35} style={{color: '#009999', marginRight: '3px'}}/>
           <strong>My Shelf</strong>
         </div>
         </Link>

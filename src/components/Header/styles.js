@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
 
 export const Container = styled.header`
 
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   margin: 40px 0;
   text-decoration: none;
   font-size: 30px;
@@ -13,33 +13,18 @@ export const Container = styled.header`
   div {
     display: flex;
     align-items: center;
-    text-align: right;
 
   }
 
-  strong {
+  a {
     margin-left: 10px;
-    color: #009999
+    color: #009999;
+    text-decoration: none;
   }
 
 `;
 
-export const Next = styled(Link)`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
 
-  strong {
-    font-size: 20px;
-    color: #009999
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    text-align: right;
-  }
-`;
 
 
 
