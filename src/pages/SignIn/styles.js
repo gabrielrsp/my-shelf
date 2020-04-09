@@ -7,7 +7,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: rgba(0,0,0,0.0300);
+  border: 0;
+  border-radius: 4px;
   width: 400px;
+  margin: auto;
 
 `;
 
