@@ -1,8 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
-import { Wrapper, Content } from './styles';
+import { signUpRequest } from '../../store/modules/auth/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('You need to enter your name'),
@@ -13,14 +14,16 @@ const schema = Yup.object().shape({
     .required('Password is required')
 });
 
-function SignUp() {
-  function handleSubmit(data) {
 
+function SignUp() {
+  const dispatch = useDispatch();
+
+  function handleSubmit({ name, email, password }) {
+    dispatch(signUpRequest(name, email, password))
   }
 
   return (
-    <Wrapper>
-      <Content>
+    <>
         <h1>Sign Up</h1>
         <Form schema={schema} onSubmit={handleSubmit}>
           <Input name="name" placeholder="Full Name" />
@@ -30,9 +33,7 @@ function SignUp() {
           <button type="submit">Create Account</button>
           <Link to="/">Already have an Account</Link>
         </Form>
-      </Content>
-    </Wrapper>
-
+    </>
   );
 }
 

@@ -2,8 +2,6 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { BookList, Container, Form, SubmitButton, UpdateButton } from './styles';
 import { FaPlus, FaEdit, FaTimes } from "react-icons/fa";
 import BookItem from '../../components/BookItem'
-import api from '../../services/api';
-
 
 function Main() {
 

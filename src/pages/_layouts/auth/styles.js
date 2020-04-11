@@ -6,11 +6,28 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.0300);
+  background: rgba(0,0,0,0.06);
   border: 0;
   border-radius: 4px;
   width: 400px;
   margin: auto;
+  margin-top: 30px;
+
+`;
+
+
+export const Title = styled.div`
+
+ margin-top: 30px;
+
+
+  strong {
+
+  font-size: 30px;
+  margin-top: 30px;
+  text-align: center;
+  color: #009999;
+  }
 
 `;
 
@@ -42,8 +59,7 @@ export const Content = styled.div`
     border: 0;
     border-radius: 4px;
     height: 44px;
-    padding: 015px;
-    color: #009999;
+    padding: 15px;
     margin: 0 0 10px;
 
     &::placeholder {

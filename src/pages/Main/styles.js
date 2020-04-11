@@ -100,13 +100,23 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
+  display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
   input {
     flex: 1;
     padding: 10px 15px;
     margin: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 4px;
   }
 
   textarea {
+    background: rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 4px;
     padding: 10px 15px 60px 10px;
     resize: vertical;
     margin: 8px;
