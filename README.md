@@ -33,11 +33,11 @@ Here you can input all the book informations, select an url image for the book, 
   -  [Reactotron](https://infinite.red/reactotron)
    
 
-### Run Project Locally
+## Run Project Locally
 
 First of all, if you don't have postgres, you can try installing postgres docker container, following the steps below
 
-## Example:
+### Example:
 Assuming you already have docker installed, download the postgres image and set the container parameters
 
 ###  Download the image
