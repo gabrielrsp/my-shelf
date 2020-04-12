@@ -77,7 +77,7 @@ Now, you need to connect to the database and then create another database with t
 
 ### Install the sequelize cli dependency 
 
-You need to install the sequelize command line interface as a developer dependency passing the flag "-D" so we can run sequelize commands
+You need to install the sequelize command line interface as a developer dependency passing the flag "-D" so you can run sequelize commands
 
 #### `yarn add sequelize-cli -D`
 
