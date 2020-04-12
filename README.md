@@ -8,15 +8,30 @@ Here you can input all the book informations, select an url image for the book, 
 ![](MyShelfDemo.gif)
 
 ## Technologies Used
-  ### Front End
-   *HTML
-   *CSS - Styled Components
-   *Javascript - ReactJS 
+  
   ### Back end
-   *NodeJS - Express Framework
-   *Postgres
-   *Sequelize
-   *JWT
+  
+  -  [NodeJS](https://nodejs.org/)
+  -  [ExpressJS](https://expressjs.com/)
+  -  [Postgres](https://postgresql.org/)
+  -  [Sequelize](https://sequelize.org/master/)
+  -  [JWT](https://jwt.io/)
+  
+  ### Front End   
+  
+-  [ReactJS](https://reactjs.org/)
+-  [Redux](https://redux.js.org/)
+-  [Redux-Saga](https://redux-saga.js.org/)
+-  [React Router v4](https://github.com/ReactTraining/react-router)
+-  [Axios](https://github.com/axios/axios)
+-  [History](https://www.npmjs.com/package/history)
+-  [Immer](https://github.com/immerjs/immer)
+-  [Polished](https://polished.js.org/)
+-  [React-Toastify](https://fkhadra.github.io/react-toastify/)
+-  [styled-components](https://www.styled-components.com/)
+-  [React-Icons](https://react-icons.netlify.com/)
+-  [Reactotron](https://infinite.red/reactotron)
+-  [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
    
    
    ## Run Project Locally
