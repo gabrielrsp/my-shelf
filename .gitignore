@@ -6,7 +6,7 @@ node_modules/
 /.pnp
 .pnp.js
 .env
-/backend/tmp/uploads/*
+backend/tmp/uploads/*
 
 # testing
 /coverage
@@ -24,4 +24,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+tmp/*
 
+# don't ignore keep files
+!.gitkeep
