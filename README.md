@@ -39,7 +39,6 @@ After installing docker, download the postgres image and set the container param
 
 ### `docker start myshelf`
 
------------------
 
 *after cloning this project:
 
@@ -48,8 +47,6 @@ After installing docker, download the postgres image and set the container param
 *install dependencies
 
 ### `yarn install`
-
---------------------
 
 
 *in .env.example file:
@@ -65,32 +62,22 @@ DB_NAME=myshelf
 * then rename the folder ".env.example" to ".env" 
 
 
---------------------------
-
-
  Using some postgres client interface, connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf"
 
-
-----------------------------
 
 *install de sequelize cli dependency as a developer dependency passing the flag "-D"
 
  ### `yarn add sequelize-cli -D`
 
----------------------------
 
 now you can run migrations to build the relations on database created
 
 ### `yarn sequelize db:migrate`
 
---------------------------
 
 *now the server is ready! you can run it with:
 
 ### `yarn dev`
-
-------------------------
-************************
 
 * cd in the frontend directory:
 
