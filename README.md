@@ -34,6 +34,8 @@ Here you can input all the book informations, select an url image for the book, 
    
 
 
+### Run Project Locally
+
 First of all, if you don't have postgres, you can try installing postgres container, following the steps below
 
 ## Example:
@@ -46,9 +48,7 @@ Assuming you already have docker installed, download the postgres image and set 
 #### `docker start myshelf`
 
 
-### Run Project Locally
-
-Assuming you already have Node.JS and Yarn Clone or fork this repository,
+##### Assuming you already have Node.JS and Yarn, Clone or fork this repository,
 
 #### after cloning this project:
 
