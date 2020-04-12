@@ -57,7 +57,7 @@ Now, Assuming you already have Node.JS and Yarn,
 
 ### cd to backend directory:
 
-#### install back end dependencies
+#### Install back end dependencies
 
 #### `yarn install`
 
@@ -81,7 +81,7 @@ Now, you need to connect to the database and then create another database with t
 
 #### `yarn add sequelize-cli -D`
 
-now you can run migrations to build the relations on database created
+Now you can run migrations to build the relations on database created
 
 #### `yarn sequelize db:migrate`
 
