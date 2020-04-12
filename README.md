@@ -40,27 +40,26 @@ First of all, if you don't have postgres, you can try installing postgres docker
 ## Example:
 Assuming you already have docker installed, download the postgres image and set the container parameters
 
+###  Download the image
+
 #### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
 
 
-####  Start the container
+###  Start the container
 
 #### `docker start myshelf`
 
 Now, Assuming you already have Node.JS and Yarn, 
 
-
-#### Clone or fork this repository
+### Clone or fork this repository
 
 #### `git clone https://github.com/gabrielrsp/my-shelf.git`
 
+#### cd to backend directory:
 
-### cd to backend directory:
-
-#### Install back end dependencies
+### Install backend dependencies
 
 #### `yarn install`
-
 
 ### Edit .env.example file:
 
@@ -70,7 +69,6 @@ You need to set the database environment variables configuration, if you followe
 #### `DB_USER=postgres`
 #### `DB_PASS=docker`
 #### `DB_NAME=myshelf`
-
 
 ### Rename the file ".env.example" to ".env" 
 
@@ -87,15 +85,13 @@ Now you can run migrations to build the relations on database created
 
 #### `yarn sequelize db:migrate`
 
-
 ### Now the server is ready! you can run it with:
 
 #### `yarn dev`
 
+#### cd in the frontend directory:
 
-### cd in the frontend directory:
-
-#### install front end dependencies with:
+### install frontend dependencies
 
  #### `yarn install`
 
