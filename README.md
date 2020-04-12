@@ -85,7 +85,7 @@ Now you can run migrations to build the relations on database created
 
 #### `yarn sequelize db:migrate`
 
-### Now the server is ready! You can run it with:
+### Server is ready! You can run it with:
 
 #### `yarn dev`
 
