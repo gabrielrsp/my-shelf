@@ -55,9 +55,9 @@ Now, Assuming you already have Node.JS and Yarn,
 #### `git clone https://github.com/gabrielrsp/my-shelf.git`
 
 
-#### cd to backend folder:
+### cd to backend directory:
 
-#### install dependencies
+#### install back end dependencies
 
 #### `yarn install`
 
@@ -91,9 +91,9 @@ now you can run migrations to build the relations on database created
 #### `yarn dev`
 
 
-#### cd in the frontend directory:
+### cd in the frontend directory:
 
-#### install dependencies with:
+#### install front end dependencies with:
 
  #### `yarn install`
 
