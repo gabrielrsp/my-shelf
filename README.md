@@ -26,8 +26,6 @@ Clone or fork this repository,
 Assuming you already have Node.JS, Yarn and Docker installed,
 
 first of all, if you need don't have postgres, you can try installing postgres container, following the steps below
- 
----------------------------
 
 ## Example:
 
@@ -39,15 +37,13 @@ After installing docker, download the postgres image and set the container param
 
 ### `docker start myshelf`
 
-
 ## after cloning this project:
 
-# cd to backend folder:
+### cd to backend folder:
 
-# install dependencies
+### install dependencies
 
 ### `yarn install`
-
 
 ## in .env.example file:
 
@@ -57,7 +53,6 @@ DB_HOST=localhost
 DB_USER=postgres
 DB_PASS=docker
 DB_NAME=myshelf
-
 
 ### then rename the folder ".env.example" to ".env" 
 
