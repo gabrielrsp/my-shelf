@@ -75,9 +75,9 @@ You need to set the database environment variables configuration, if you followe
 Now, you need to connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf". For this step you can use any postgres client interface Like PostBird, DBeaver, etc.
 
 
-### Install de sequelize cli dependency 
+### Install the sequelize cli dependency 
 
-You need to install the sequelize cli as a developer dependency passing the flag "-D" so we can run sequelize commands
+You need to install the sequelize command line interface as a developer dependency passing the flag "-D" so we can run sequelize commands
 
 #### `yarn add sequelize-cli -D`
 
