@@ -9,7 +9,7 @@ Here you can input all the book informations, select an url image for the book, 
 
 ## Technologies Used
   
-  ### Back end
+  ### Back End
   
   -  [NodeJS](https://nodejs.org/)
   -  [ExpressJS](https://expressjs.com/)
@@ -32,17 +32,13 @@ Here you can input all the book informations, select an url image for the book, 
   -  [React-Icons](https://react-icons.netlify.com/)
   -  [Reactotron](https://infinite.red/reactotron)
    
-## Run Project Locally
 
-Clone or fork this repository,
 
-Assuming you already have Node.JS, Yarn and Docker installed,
+First of all, if you don't have postgres, you can try installing postgres container, following the steps below
 
-first of all, if you need don't have postgres, you can try installing postgres container, following the steps below
+Assuming you already have docker installed, download the postgres image and set the container parameters
 
 ## Example:
-
-After installing docker, download the postgres image and set the container parameters
 
 ### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
 
@@ -51,6 +47,10 @@ After installing docker, download the postgres image and set the container param
 ### `docker start myshelf`
 
 ---------
+
+## Run Project Locally
+
+Assuming you already have Node.JS and Yarn Clone or fork this repository,
 
 ### after cloning this project:
 
