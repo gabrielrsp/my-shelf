@@ -81,6 +81,8 @@ You need to install the sequelize command line interface as a developer dependen
 
 #### `yarn add sequelize-cli -D`
 
+### Run migrations
+
 Now you can run migrations to build the relations on database created
 
 #### `yarn sequelize db:migrate`
