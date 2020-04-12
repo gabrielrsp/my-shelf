@@ -39,26 +39,26 @@ First of all, if you don't have postgres, you can try installing postgres contai
 ## Example:
 Assuming you already have docker installed, download the postgres image and set the container parameters
 
-### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
+#### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
 
-###  Start the container
+####  Start the container
 
-### `docker start myshelf`
+#### `docker start myshelf`
 
 
-## Run Project Locally
+### Run Project Locally
 
 Assuming you already have Node.JS and Yarn Clone or fork this repository,
 
-### after cloning this project:
+#### after cloning this project:
 
-### cd to backend folder:
+#### cd to backend folder:
 
-### install dependencies
+#### install dependencies
 
-### `yarn install`
+#### `yarn install`
 
-### in .env.example file:
+#### in .env.example file:
 
 you need to set the database environment variables configuration, if you followed the container configuration, you can follow this an example:
 
@@ -67,32 +67,32 @@ DB_USER=postgres
 DB_PASS=docker
 DB_NAME=myshelf
 
-### then rename the folder ".env.example" to ".env" 
+#### then rename the folder ".env.example" to ".env" 
 
 Using some postgres client interface, connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf"
 
-### install de sequelize cli dependency as a developer dependency passing the flag "-D"
+#### install de sequelize cli dependency as a developer dependency passing the flag "-D"
 
-### `yarn add sequelize-cli -D`
+#### `yarn add sequelize-cli -D`
 
 now you can run migrations to build the relations on database created
 
-### `yarn sequelize db:migrate`
+#### `yarn sequelize db:migrate`
 
 
 *now the server is ready! you can run it with:
 
-### `yarn dev`
+#### `yarn dev`
 
-### cd in the frontend directory:
+#### cd in the frontend directory:
 
-### install dependencies with:
+#### install dependencies with:
 
- ### `yarn install`
+ #### `yarn install`
 
-### Run the front end application:
+#### Run the front end application:
 
-### `yarn start`
+#### `yarn start`
 
 
 Runs the app in the development mode.<br />
