@@ -63,7 +63,7 @@ Now, Assuming you already have Node.JS and Yarn,
 
 ### Edit .env.example file:
 
-You need to set the database environment variables configuration, if you followed the container configuration, you can copy this an example:
+You need to set the database environment variables configuration, if you followed the container configuration, you can copy this example:
 
 #### `DB_HOST=localhost`
 #### `DB_USER=postgres`
