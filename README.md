@@ -33,7 +33,6 @@ Here you can input all the book informations, select an url image for the book, 
   -  [Reactotron](https://infinite.red/reactotron)
    
 
-
 ### Run Project Locally
 
 First of all, if you don't have postgres, you can try installing postgres docker container, following the steps below
@@ -43,15 +42,18 @@ Assuming you already have docker installed, download the postgres image and set 
 
 #### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
 
+
 ####  Start the container
 
 #### `docker start myshelf`
 
 Now, Assuming you already have Node.JS and Yarn, 
 
-#### Clone or fork this repository,
+
+#### Clone or fork this repository
 
 #### `git clone https://github.com/gabrielrsp/my-shelf.git`
+
 
 #### cd to backend folder:
 
@@ -59,18 +61,21 @@ Now, Assuming you already have Node.JS and Yarn,
 
 #### `yarn install`
 
+
 #### in .env.example file:
 
 you need to set the database environment variables configuration, if you followed the container configuration, you can follow this an example:
 
-DB_HOST=localhost
-DB_USER=postgres
-DB_PASS=docker
-DB_NAME=myshelf
+#### `DB_HOST=localhost`
+#### `DB_USER=postgres`
+#### `DB_PASS=docker`
+#### `DB_NAME=myshelf`
+
 
 #### then rename the folder ".env.example" to ".env" 
 
 Using some postgres client interface, connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf"
+
 
 #### install de sequelize cli dependency as a developer dependency passing the flag "-D"
 
@@ -80,9 +85,11 @@ now you can run migrations to build the relations on database created
 
 #### `yarn sequelize db:migrate`
 
+
 ### Now the server is ready! you can run it with:
 
 #### `yarn dev`
+
 
 #### cd in the frontend directory:
 
