@@ -36,9 +36,8 @@ Here you can input all the book informations, select an url image for the book, 
 
 First of all, if you don't have postgres, you can try installing postgres container, following the steps below
 
-Assuming you already have docker installed, download the postgres image and set the container parameters
-
 ## Example:
+Assuming you already have docker installed, download the postgres image and set the container parameters
 
 ### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
 
@@ -46,7 +45,6 @@ Assuming you already have docker installed, download the postgres image and set 
 
 ### `docker start myshelf`
 
----------
 
 ## Run Project Locally
 
