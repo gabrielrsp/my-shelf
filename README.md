@@ -36,7 +36,7 @@ Here you can input all the book informations, select an url image for the book, 
 
 ### Run Project Locally
 
-First of all, if you don't have postgres, you can try installing postgres container, following the steps below
+First of all, if you don't have postgres, you can try installing postgres docker container, following the steps below
 
 ## Example:
 Assuming you already have docker installed, download the postgres image and set the container parameters
@@ -49,8 +49,6 @@ Assuming you already have docker installed, download the postgres image and set 
 
 
 ##### Assuming you already have Node.JS and Yarn, Clone or fork this repository,
-
-#### after cloning this project:
 
 #### cd to backend folder:
 
@@ -79,8 +77,7 @@ now you can run migrations to build the relations on database created
 
 #### `yarn sequelize db:migrate`
 
-
-*now the server is ready! you can run it with:
+### Now the server is ready! you can run it with:
 
 #### `yarn dev`
 
