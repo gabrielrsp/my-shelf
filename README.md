@@ -62,9 +62,9 @@ Now, Assuming you already have Node.JS and Yarn,
 #### `yarn install`
 
 
-#### in .env.example file:
+### Edit .env.example file:
 
-you need to set the database environment variables configuration, if you followed the container configuration, you can follow this an example:
+You need to set the database environment variables configuration, if you followed the container configuration, you can follow this an example:
 
 #### `DB_HOST=localhost`
 #### `DB_USER=postgres`
@@ -72,9 +72,9 @@ you need to set the database environment variables configuration, if you followe
 #### `DB_NAME=myshelf`
 
 
-#### then rename the folder ".env.example" to ".env" 
+### Rename the file ".env.example" to ".env" 
 
-Using some postgres client interface, connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf"
+Now, you need to connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf". For this step you can use any postgres client interface Like PostBird, DBeaver, etc.
 
 
 #### install de sequelize cli dependency as a developer dependency passing the flag "-D"
