@@ -9,21 +9,21 @@ Here you can input all the book informations, select an url image for the book, 
 
 ## Technologies Used
   ### Front End
-   HTML
-   CSS - Styled Components
-   Javascript - ReactJS 
+   *HTML
+   *CSS - Styled Components
+   *Javascript - ReactJS 
   ### Back end
-   NodeJS - Express Framework
-   Postgres
-   Sequelize
-   JWT
+   *NodeJS - Express Framework
+   *Postgres
+   *Sequelize
+   *JWT
    
    
    ## Run Project Locally
 
 Clone or fork this repository,
 
-Assuming you already have Node.JS and Yarn and Docker installed,
+Assuming you already have Node.JS, Yarn and Docker installed,
 
 first of all, if you need don't have postgres, you can try installing postgres container, following the steps below
  
@@ -40,16 +40,16 @@ After installing docker, download the postgres image and set the container param
 ### `docker start myshelf`
 
 
-*after cloning this project:
+## after cloning this project:
 
-*cd to backend folder:
+# cd to backend folder:
 
-*install dependencies
+# install dependencies
 
 ### `yarn install`
 
 
-*in .env.example file:
+## in .env.example file:
 
 * you need to set the database environment variables configuration, if you followed the container configuration, you can follow this an example:
 
@@ -59,13 +59,11 @@ DB_PASS=docker
 DB_NAME=myshelf
 
 
-* then rename the folder ".env.example" to ".env" 
-
+### then rename the folder ".env.example" to ".env" 
 
  Using some postgres client interface, connect to the database and then create another database with the name you gave in the .env credentials, in this example, the database name is "myshelf"
 
-
-*install de sequelize cli dependency as a developer dependency passing the flag "-D"
+### install de sequelize cli dependency as a developer dependency passing the flag "-D"
 
  ### `yarn add sequelize-cli -D`
 
