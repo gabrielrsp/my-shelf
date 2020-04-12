@@ -47,8 +47,11 @@ Assuming you already have docker installed, download the postgres image and set 
 
 #### `docker start myshelf`
 
+Now, Assuming you already have Node.JS and Yarn, 
 
-##### Assuming you already have Node.JS and Yarn, Clone or fork this repository,
+#### Clone or fork this repository,
+
+#### `git clone https://github.com/gabrielrsp/my-shelf.git`
 
 #### cd to backend folder:
 
