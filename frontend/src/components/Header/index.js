@@ -1,11 +1,13 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaBook } from "react-icons/fa";
 
 import { Container, Profile, Content } from './styles';
 
 export default function Header() {
+
+  const profile = useSelector(state => state.user.profile);
 
   return (
     <Container>
@@ -19,7 +21,7 @@ export default function Header() {
         <aside>
           <Profile>
             <div>
-              <strong>Gabriel Rodrigues</strong>
+              <strong>{profile.name}</strong>
               <Link to="/profile">Profile</Link>
             </div>
           </Profile>

@@ -5,6 +5,8 @@ export const Container = styled.div`
   background: #009999;
   padding: 0 30px;
   border-radius: 4px;
+  position: sticky;
+  top: 0;
 
   div {
     display: flex;

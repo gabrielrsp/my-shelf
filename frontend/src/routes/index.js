@@ -4,7 +4,7 @@ import Route from './Route';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
-import Profile from '../pages/SignUp';
+import Profile from '../pages/Profile';
 
 import Main from "../pages/Main";
 import Details from '../pages/Details';

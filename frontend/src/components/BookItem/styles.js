@@ -111,7 +111,7 @@ export const EditButton = styled.button`
 
 
 export const DeleteButton = styled.button`
-    background: #99004d;
+    background: #b30059;
     color: #fff;
     border: 0;
     border-radius: 4px;
@@ -121,7 +121,7 @@ export const DeleteButton = styled.button`
     padding: 4px;
 
     &:hover {
-      background: ${darken(0.03, '#99004d')};
+      background: ${darken(0.03, '#b30059')};
     }
 
     span {
