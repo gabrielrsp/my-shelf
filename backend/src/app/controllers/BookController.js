@@ -59,6 +59,16 @@ class BookController {
     return res.json(book);
   }
 
+  async delete(req, res) {
+
+    const { id } = req.params
+    const book = await Book.destroy({
+       where: { id }
+    });
+
+    return res.json(book);
+  }
+
   async update(req, res){
 
     const schema = Yup.object().shape({
