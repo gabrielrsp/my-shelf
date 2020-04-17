@@ -7,9 +7,9 @@ export default function BookItem({book, onEdit, onDelete }) {
     {
     book.newUrl ?
     <>
-      <StyledLink to={`/details/${book.newName}`}>
+      <StyledLink to={`/details/${book.id}`}>
           <img
-            src={book.newUrl} alt="book"
+            src={Image.url} alt="book"
             onError={
               (e)=>{e.target.onerror = null;
                 e.target.src="https://static.thenounproject.com/png/111370-200.png"
@@ -17,22 +17,22 @@ export default function BookItem({book, onEdit, onDelete }) {
               }}
           />
       </StyledLink>
-        <strong>{book.newName}</strong>
+        <strong>{book.name}</strong>
         </>
       :
       <>
-      <StyledLink to={`/details/${book.newName}`}>
+      <StyledLink to={`/details/${book.id}`}>
           <img style={ { marginTop:'75px', marginBottom:'40px', marginLeft:'25px', width: '150px',height: '150px'}}
                 alt="book"
                 src='https://static.thenounproject.com/png/111370-200.png'
                 />
       </StyledLink>
-      <strong>{book.newName}</strong>
+      <strong>{book.name}</strong>
       </>
     }
       <div>
         <DetailsButton type="button">
-          <StyledLink to={`/details/${book.newName}`}>
+          <StyledLink to={`/details/${book.id}`}>
             <span>Details</span>
           </StyledLink>
         </DetailsButton>

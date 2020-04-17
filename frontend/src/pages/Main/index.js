@@ -1,60 +1,78 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { BookList, Container, Form, SubmitButton, UpdateButton } from './styles';
 import { FaPlus, FaEdit, FaTimes } from "react-icons/fa";
-import BookItem from '../../components/BookItem'
+import BookItem from '../../components/BookItem';
+import api from '../../services/api';
 
-function Main() {
+export default function Main() {
 
-  const [book, setBook] = useState([]);
+  const [book, setBook] = useState([])
   const [newName, setNewName] = useState('');
   const [newAuthor, setNewAuthor] = useState('');
   const [newUrl, setNewUrl] = useState('');
-
   const [newNotes, setNewNotes] = useState('');
-  const [id, setId] = useState('');
-
+  const [currentId, setCurrentId] = useState(0);
   const [box, setBox] = useState();
+  const [idClick, setIdClick] = useState(1);
 
-  const handleAdd = useCallback(e => {
+  useEffect(() => {
+    async function loadBooks() {
+      const response = await api.get('books');
+      setBook(response.data)
+    }
+    loadBooks();
 
-    if (newName) {
+  }, [idClick])
 
-      e.preventDefault()
+  async function handleAdd(e) {
 
-      let id = Math.floor(Math.random() * 700);
+    if (!newName) {
+      alert('Book name is Required!');
+    } else
 
-      id = Math.floor(Math.random() * 9999999);
+      setIdClick(newName)
+    e.preventDefault()
 
+    await api.post('/books', {
+      name: newName,
+      author: newAuthor,
+      notes: newNotes
+    })
 
-      setBook([...book,
-      {
-        newName,
-        newAuthor,
-        newUrl,
-        newNotes,
-        id
-      }]);
+    setBook([...book, {
+      name: newName,
+      author: newAuthor,
+      notes: newNotes
+    }])
+
+    setNewName('');
+    setNewAuthor('');
+    setNewUrl('');
+    setNewNotes('');
+
+  }
+
+  const toggleBox = useCallback(() => {
+    setBox(!box)
+  }, [box]);
+
+  async function handleDelete(id) {
+
+    const confirm = window.confirm("Are you sure you want to delete this book?")
+    if (confirm) {
+
+      await api.delete(`books/${id}`)
+      setBook(book.filter(b => b.id !== id))
 
       setNewName('');
       setNewAuthor('');
       setNewUrl('');
       setNewNotes('');
-      setId('')
+      toggleBox()
+      setBox(false)
 
-    } else
-      alert('Book name is Required!');
-    e.preventDefault()
-  }, [
-    book,
-    newName,
-    newAuthor,
-    newUrl,
-    newNotes,
-  ]);
-
-  const toggleBox = useCallback(() => {
-    setBox(!box)
-  }, [box]);
+    }
+  }
 
   const handleClean = useCallback(e => {
     e.preventDefault()
@@ -63,98 +81,57 @@ function Main() {
     setNewAuthor('');
     setNewUrl('');
     setNewNotes('');
-    setId('')
     toggleBox()
   }, [toggleBox]
   );
 
-  const handleUpdate = useCallback(e => {
 
-    e.preventDefault()
-    const data = [...book];
-    const index = data.findIndex(obj => data.indexOf(obj) === book.indexOf(obj));
+  async function handleEdit(id) {
 
-    let secData = { ...data[index] }
-
-    secData.newName = newName
-    secData.newAuthor = newAuthor
-    secData.newUrl = newUrl
-    secData.newNotes = newNotes
-    secData.id = id
-
-    let newObj = { ...secData }
-    let arr = []
-
-    data.forEach((b) => arr.push(b))
-
-    const currentObj = arr.find(obj => obj.newName === newObj.newName);
-    const destObj = { ...currentObj }
-
-    destObj.newName = newName
-    destObj.newAuthor = newAuthor
-    destObj.newUrl = newUrl
-    destObj.newNotes = newNotes
-    destObj.id = Math.floor(Math.random() * 700);
-
-    setBook([...data.filter(b => b.id !== secData.id),
-      destObj
-    ]);
-
-    handleClean(e)
-
-  }, [book,
-    newName,
-    newAuthor,
-    newUrl,
-    newNotes,
-    handleClean,
-    id
-  ]);
-
-    const handleEdit = useCallback( bookItem => {
-
+    const response = await api.get(`books/${id}`)
+    setNewName(response.data.name);
+    setNewAuthor(response.data.author);
+    setNewNotes(response.data.notes);
+    setCurrentId(response.data.id);
     setBox(true)
-    setNewName(bookItem.newName);
-    setNewAuthor(bookItem.newAuthor);
-    setNewUrl(bookItem.newUrl);
-    setNewNotes(bookItem.newNotes);
-    setId(bookItem.id);
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
 
-  }, [] );
+  }
 
-    const handleDelete = useCallback( bookItem => {
+  async function handleUpdate(e) {
 
-    const r = window.confirm("Are you sure you want to dele this book?")
+    if (!newName) {
+      e.preventDefault()
+      alert('Book name is Required!');
+    } else
 
-    if (r) {
-      setBook(book.filter(b => b !== bookItem))
-      setNewName('');
-      setNewAuthor('');
-      setNewUrl('');
-      setNewNotes('');
-      toggleBox()
-      setBox(false)
-    }
-  }, [book, toggleBox]);
+      setIdClick(newName)
+    e.preventDefault()
 
-  useEffect(() => {
-    const data = localStorage.getItem('book-list');
-    if (data) {
-      setBook(JSON.parse(data));
-    }
-  }, []);
+    await api.put(`books/${currentId}`, {
+      name: newName,
+      author: newAuthor,
+      notes: newNotes
+    })
 
-  useEffect(() => {
-    localStorage.setItem('book-list', JSON.stringify(book));
-  }, [book]);
+    const response = await api.get('books');
+    setBook(response.data)
+
+
+    setNewName('');
+    setNewAuthor('');
+    setNewUrl('');
+    setNewNotes('');
+
+    handleClean(e)
+
+  }
 
   const bookSize = useMemo(() => book.length, [book])
-
 
   return (
     <>
@@ -229,17 +206,19 @@ function Main() {
       <BookList>
         {
           book.map(book => (
-            <BookItem
-              key={book.id}
-              book={book}
-              onDelete={() => { handleDelete(book) }}
-              onEdit={() => { handleEdit(book) }}
-            />
+            <>
+              <BookItem
+                key={book.id}
+                book={book}
+                onDelete={() => { handleDelete(book.id) }}
+                onEdit={() => { handleEdit(book.id) }}
+              />
+            </>
           ))
         }
       </BookList>
     </>
   );
+
 }
 
-export default Main;

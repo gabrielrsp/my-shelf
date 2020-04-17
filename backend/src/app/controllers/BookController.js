@@ -92,7 +92,6 @@ class BookController {
       }
     }
 
-    console.log(book);
 
     await book.update(req.body)
 
