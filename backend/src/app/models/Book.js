@@ -6,6 +6,7 @@ class Book extends Model {
       name: Sequelize.STRING,
       author: Sequelize.STRING,
       notes: Sequelize.STRING,
+      url_image: Sequelize.STRING,
     },
     {
       sequelize,
@@ -17,8 +18,6 @@ class Book extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id' });
-    this.belongsTo(models.File, { foreignKey: 'image_id', as: 'Image' });
-
   }
 
 }

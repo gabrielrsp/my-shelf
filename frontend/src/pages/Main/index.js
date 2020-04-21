@@ -36,13 +36,15 @@ export default function Main() {
     await api.post('/books', {
       name: newName,
       author: newAuthor,
-      notes: newNotes
+      notes: newNotes,
+      url_image: newUrl
     })
 
     setBook([...book, {
       name: newName,
       author: newAuthor,
-      notes: newNotes
+      notes: newNotes,
+      url_image: newUrl
     }])
 
     setNewName('');
@@ -85,13 +87,13 @@ export default function Main() {
   }, [toggleBox]
   );
 
-
   async function handleEdit(id) {
 
     const response = await api.get(`books/${id}`)
     setNewName(response.data.name);
     setNewAuthor(response.data.author);
     setNewNotes(response.data.notes);
+    setNewUrl(response.data.url_image);
     setCurrentId(response.data.id);
     setBox(true)
 
@@ -121,12 +123,10 @@ export default function Main() {
     const response = await api.get('books');
     setBook(response.data)
 
-
     setNewName('');
     setNewAuthor('');
     setNewUrl('');
     setNewNotes('');
-
     handleClean(e)
 
   }
@@ -137,6 +137,7 @@ export default function Main() {
     <>
       <Container >
         <h1>Add Book to the Shelf</h1>
+
         <Form onSubmit={() => { }}>
           <input
             type="text"
@@ -192,7 +193,6 @@ export default function Main() {
               :
               <></>
           }
-
         </Form>
         {
           bookSize > 1 || bookSize === 0 ?
@@ -200,7 +200,6 @@ export default function Main() {
             :
             <h3>You have {bookSize} book</h3>
         }
-
       </Container>
 
       <BookList>

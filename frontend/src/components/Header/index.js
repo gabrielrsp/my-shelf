@@ -21,7 +21,7 @@ export default function Header() {
         <aside>
           <Profile>
             <div>
-              <strong>{profile.name}</strong>
+              <strong>Hello, {profile.name} !</strong>
               <Link to="/profile">Profile</Link>
             </div>
           </Profile>

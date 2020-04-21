@@ -9,20 +9,21 @@ class BookController {
       name: Yup.string().required(),
       author: Yup.string(),
       notes: Yup.string(),
+      image_url: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { name, author, notes, image_id } = req.body;
+    const { name, author, notes, url_image } = req.body;
 
     const book = await Book.create({
       user_id: req.userId,
-      image_id,
       name,
       author,
       notes,
+      url_image
     });
 
     return res.json(book);
@@ -31,7 +32,7 @@ class BookController {
   async index(req, res) {
 
     const books = await Book.findAll({
-      attributes: ['id', 'name', 'author', 'notes', 'createdAt', 'updatedAt'],
+      attributes: ['id', 'name', 'author', 'notes', 'url_image', 'createdAt', 'updatedAt'],
       include: [{
         model: User,
         attributes: ['id', 'name'],
@@ -39,13 +40,7 @@ class BookController {
           id: req.userId
         },
         order: ['updated_at']
-      },
-      {
-        model: File,
-        as: 'Image',
-        attributes: ['id', 'name', 'path', 'url',],
-      },
-
+      }
       ]
     });
     return res.json(books);
@@ -76,7 +71,7 @@ class BookController {
     });
 
     const { id } = req.params
-    const { name, author, notes, image_id } = req.body;
+    const { name, author, notes, url_image } = req.body;
 
     let book = await Book.findByPk(id)
 
@@ -100,7 +95,7 @@ class BookController {
       name,
       author,
       notes,
-      image_id,
+      url_image
       },
       {where: {id}}
     );
@@ -109,7 +104,7 @@ class BookController {
       name,
       author,
       notes,
-      image_id,
+      url_image,
     });
 
   }
