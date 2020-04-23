@@ -25,8 +25,8 @@ function Details({ match }) {
 
         <div >
           {
-            book.newUrl ?
-              <img src={book.newUrl} alt="book"
+            book.url_image ?
+              <img src={book.url_image} alt="book"
               onError={
                 (e)=>{e.target.onerror = null;
                 e.target.src="https://static.thenounproject.com/png/111370-200.png"

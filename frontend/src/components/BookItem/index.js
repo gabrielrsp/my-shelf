@@ -5,11 +5,11 @@ export default function BookItem({book, onEdit, onDelete }) {
   return (
     <li>
     {
-    book.newUrl ?
+    book.url_image ?
     <>
       <StyledLink to={`/details/${book.id}`}>
           <img
-            src={Image.url} alt="book"
+            src={book.url_image} alt="book"
             onError={
               (e)=>{e.target.onerror = null;
                 e.target.src="https://static.thenounproject.com/png/111370-200.png"
