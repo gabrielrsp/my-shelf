@@ -23,7 +23,7 @@ export function* updateProfile({ payload }) {
 
   } catch (err) {
 
-    toast.success('Failed to update Profile');
+    toast.error('Failed to update Profile');
     yield put(updateProfileFailure())
 
   }

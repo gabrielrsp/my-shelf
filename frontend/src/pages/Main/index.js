@@ -33,19 +33,18 @@ export default function Main() {
       setIdClick(newName)
     e.preventDefault()
 
-    await api.post('/books', {
+    const response = await api.post('/books', {
       name: newName,
       author: newAuthor,
-      notes: newNotes,
-      url_image: newUrl
+      url_image: newUrl,
+      notes: newNotes
+
     })
 
-    setBook([...book, {
-      name: newName,
-      author: newAuthor,
-      notes: newNotes,
-      url_image: newUrl
-    }])
+    const { name, author, notes, url_image } = response.data;
+    const newBook = { name, author, url_image, notes }
+
+    setBook([...book, newBook])
 
     setNewName('');
     setNewAuthor('');
@@ -114,19 +113,29 @@ export default function Main() {
       setIdClick(newName)
     e.preventDefault()
 
-    await api.put(`books/${currentId}`, {
+    const response = await api.put(`books/${currentId}`, {
       name: newName,
       author: newAuthor,
+      url_image: newUrl,
       notes: newNotes
+
     })
 
-    const response = await api.get('books');
-    setBook(response.data)
+    const { name, author, notes, url_image } = response.data;
+    const newBook = { name, author, url_image, notes }
+
+    const newBooks = book
+    const bookIndex = book.findIndex(book => book.id === currentId)
+
+    newBooks[bookIndex] = newBook
+
+    setBook(newBooks)
 
     setNewName('');
     setNewAuthor('');
     setNewUrl('');
     setNewNotes('');
+    setIdClick('');
     handleClean(e)
 
   }

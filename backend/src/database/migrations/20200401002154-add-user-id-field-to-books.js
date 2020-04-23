@@ -16,6 +16,6 @@ module.exports = {
   },
 
   down: (queryInterface ) => {
-      return queryInterface.removeColumn('books', 'user_id');
+      return queryInterface.removeColumn('user_id');
   }
 };
