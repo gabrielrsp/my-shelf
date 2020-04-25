@@ -1,3 +1,4 @@
+
 import File from '../models/File';
 
 class FileController {
@@ -13,4 +14,3 @@ class FileController {
 }
 
 export default new FileController();
-

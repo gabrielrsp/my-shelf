@@ -7,6 +7,8 @@ import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import BookController from './app/controllers/BookController';
 
+import QuotesController from './app/controllers/QuotesController';
+
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -25,6 +27,10 @@ routes.delete('/books/:id', BookController.delete);
 routes.post('/books', BookController.store);
 routes.put('/books/:id', BookController.update);
 
-routes.post('/files', upload.single('file'), FileController.store);
+routes.post('/files/books/:id', upload.single('file'), QuotesController.store );
+
+
+//routes.post('/files', upload.single('file'), QuotesController.store);
+
 
 export default routes;
