@@ -5,10 +5,10 @@ var xlsx = require("xlsx");
 class QuotesController {
   async store(req, res) {
 
-    const { filename: path } = req.file;
+    const { filename } = req.file;
     const { id } = req.params;
 
-    var reader = xlsx.readFile(`./tmp/uploads/${path}`);
+    var reader = xlsx.readFile(`./tmp/uploads/${filename}`);
     var sheetName = reader.SheetNames[0];
     var table = reader.Sheets[sheetName];
     var data = xlsx.utils.sheet_to_json(table);

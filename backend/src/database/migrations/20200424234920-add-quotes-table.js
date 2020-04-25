@@ -12,6 +12,7 @@ module.exports = {
         quote: {
           type: Sequelize.TEXT,
           allowNull: true,
+          unique: true
         },
         created_at: {
           type: Sequelize.DATE,
