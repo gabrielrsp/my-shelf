@@ -20,11 +20,12 @@ class QuotesController {
 
     const quotes = await
 
-
     quotesArray.map ( quote =>  Quote.create(
-      { quote,
-
-        book_id: id })
+      {
+        quote,
+        book_id: id,
+        user_id: req.userId
+      })
     )
     return res.json(quotes);
 
