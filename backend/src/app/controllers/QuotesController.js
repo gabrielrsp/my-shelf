@@ -1,7 +1,7 @@
 import Quote from '../models/Quote';
-import Book from '../models/Book';
 
 var xlsx = require("xlsx");
+var fs = require('fs');
 
 class QuotesController {
   async store(req, res) {
@@ -9,10 +9,20 @@ class QuotesController {
     const { filename } = req.file;
     const { id } = req.params;
 
-    var reader = xlsx.readFile(`./tmp/uploads/${filename}`);
-    var sheetName = reader.SheetNames[0];
-    var table = reader.Sheets[sheetName];
-    var data = xlsx.utils.sheet_to_json(table);
+    try {
+
+      var reader = xlsx.readFile(`./tmp/uploads/${filename}`);
+      var sheetName = reader.SheetNames[0];
+      var table = reader.Sheets[sheetName];
+      var data = xlsx.utils.sheet_to_json(table);
+
+      fs.unlink(`./tmp/uploads/${filename}`, function (err) {
+        if (err) throw err;
+      });
+
+    } catch (err) {
+      return res.status(401).json({ error: 'Invalid File' });
+    }
 
     data.splice(0, 6);
 
@@ -20,19 +30,14 @@ class QuotesController {
 
     const removedDuplicatesArray = Array.from(new Set(quotesArray))
 
-    const quotes = await
+    removedDuplicatesArray.map(quote => Quote.create({
+      quote,
+      book_id: id,
+      user_id: req.userId
+    }))
 
-    removedDuplicatesArray.map(quote => Quote.create(
-        {
-          quote,
-          book_id: id,
-          user_id: req.userId
-        })
 
-      )
-    return res.json(quotes);
-
+    return res.status(201).send();
   }
-
 }
 export default new QuotesController();
