@@ -1,6 +1,6 @@
 import Book from '../models/Book';
 import User from '../models/User';
-import File from '../models/File';
+import Quote from '../models/Quote';
 import * as Yup from 'yup';
 
 class BookController {
@@ -33,7 +33,7 @@ class BookController {
 
     const books = await Book.findAll({
       attributes: ['id', 'name', 'author', 'notes', 'url_image', 'createdAt', 'updatedAt'],
-      include: [{
+      include: {
         model: User,
         attributes: ['id', 'name'],
         where: {
@@ -41,15 +41,35 @@ class BookController {
         },
         order: ['updated_at']
       }
-      ]
+
     });
     return res.json(books);
   }
 
+
   async show(req, res) {
 
     const { id } = req.params
-    const book = await Book.findByPk(id)
+
+    const book = await Book.findByPk(id, {
+
+      include: [
+        {
+          model: User,
+          attributes: [],
+          where: {
+            id: req.userId
+          },
+          order: ['updated_at']
+        },
+        {
+          model: Quote,
+          attributes: ['id', 'quote', 'createdAt', 'updatedAt'],
+          order: ['updated_at']
+        }
+      ]
+
+    });
 
     return res.json(book);
   }
@@ -58,13 +78,13 @@ class BookController {
 
     const { id } = req.params
     const book = await Book.destroy({
-       where: { id }
+      where: { id }
     });
 
     return res.json(book);
   }
 
-  async update(req, res){
+  async update(req, res) {
 
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -92,12 +112,12 @@ class BookController {
 
     book = await Book.update(
       {
-      name,
-      author,
-      notes,
-      url_image
+        name,
+        author,
+        notes,
+        url_image
       },
-      {where: {id}}
+      { where: { id } }
     );
 
     return res.json({

@@ -20,17 +20,15 @@ routes.post('/sessions', SessionController.store)
 routes.use(authMiddleware); //global middleware valid only for routes below
 
 routes.put('/users', UserController.update);
-
 routes.get('/books', BookController.index);
+
 routes.get('/books/:id', BookController.show);
+
 routes.delete('/books/:id', BookController.delete);
 routes.post('/books', BookController.store);
 routes.put('/books/:id', BookController.update);
 
-routes.post('/files/books/:id', upload.single('file'), QuotesController.store );
-
-
-//routes.post('/files', upload.single('file'), QuotesController.store);
+routes.post('/files/books/:id', upload.single('file'), QuotesController.store);
 
 
 export default routes;

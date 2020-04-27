@@ -1,4 +1,5 @@
 import Quote from '../models/Quote';
+import Book from '../models/Book';
 
 var xlsx = require("xlsx");
 
@@ -15,21 +16,22 @@ class QuotesController {
 
     data.splice(0, 6);
 
-   const quotesArray = data.map(quote => quote.__EMPTY_2)
+    const quotesArray = data.map(quote => quote.__EMPTY_2)
     console.log(quotesArray);
 
     const quotes = await
 
-    quotesArray.map ( quote =>  Quote.create(
-      {
-        quote,
-        book_id: id,
-        user_id: req.userId
-      })
-    )
+      quotesArray.map(quote => Quote.create(
+        {
+          quote,
+          book_id: id,
+          user_id: req.userId
+        })
+
+      )
     return res.json(quotes);
 
   }
-}
 
+}
 export default new QuotesController();
