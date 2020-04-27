@@ -17,11 +17,12 @@ class QuotesController {
     data.splice(0, 6);
 
     const quotesArray = data.map(quote => quote.__EMPTY_2)
-    console.log(quotesArray);
+
+    const removedDuplicatesArray = Array.from(new Set(quotesArray))
 
     const quotes = await
 
-      quotesArray.map(quote => Quote.create(
+    removedDuplicatesArray.map(quote => Quote.create(
         {
           quote,
           book_id: id,

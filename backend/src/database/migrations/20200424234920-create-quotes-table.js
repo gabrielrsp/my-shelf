@@ -12,7 +12,7 @@ module.exports = {
         quote: {
           type: Sequelize.TEXT,
           allowNull: false,
-          unique: true
+
         },
         book_id: {
           type: Sequelize.INTEGER,
