@@ -36,8 +36,36 @@ class QuotesController {
       user_id: req.userId
     }))
 
-
     return res.status(201).send();
   }
+
+  async delete(req, res) {
+
+    const { id } = req.params;
+
+    const quote = await Quote.findOne({
+      where:
+      {
+        id,
+        user_id: req.userId
+      }
+    });
+
+    if (quote) {
+      await Quote.destroy({
+        where: {
+          id,
+          user_id: req.userId
+        }
+      })
+
+      return res.status(200).json({ messsage: 'quote removed from database' });
+
+    } else {
+      return res.status(400).json({ error: 'failed to remove quote' });
+    }
+
+  }
+
 }
 export default new QuotesController();

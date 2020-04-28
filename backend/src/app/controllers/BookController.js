@@ -77,11 +77,28 @@ class BookController {
   async delete(req, res) {
 
     const { id } = req.params
-    const book = await Book.destroy({
-      where: { id }
+
+    const book = await Book.findOne({
+      where:
+      {
+        id,
+        user_id: req.userId
+      }
     });
 
-    return res.json(book);
+    if (book) {
+      await Book.destroy({
+        where: {
+          id,
+          user_id: req.userId
+        }
+      });
+
+      return res.status(200).json({ messsage: 'book removed from database' });
+
+    } else {
+      return res.status(400).json({ error: 'failed to remove book' });
+    }
   }
 
   async update(req, res) {
