@@ -21,9 +21,8 @@ export const Container = styled.div`
     div {
       display: flex;
       margin-bottom: 10px;
-      margin-top: 8px;
+      margin-top: 5px;
         div {
-
           margin-left: 5px;
           margin-right: 20px;
           display: block;
@@ -35,12 +34,11 @@ export const Container = styled.div`
     img {
       width: 175px;
       height: 260px;
-
     }
 
 `;
 
-export const CustomButton = styled.button.attrs({type: 'submit',})`
+export const CustomButton = styled.button.attrs({ type: 'submit', })`
     display: flex;
     color: #fff;
     text-align: center;
@@ -74,10 +72,15 @@ h2 {
   color: #009999;
 }
 
+h4 {
+  margin-top: 10px;
+  color: #262626;
+}
+
 div {
   display: flex;
 
-  padding: 10px;
+  padding: 7px;
   background: rgba(0,0,0,0.2);
   width: 100%;
   margin-bottom: 30px;
@@ -126,51 +129,16 @@ export const FileList = styled.ul`
 `;
 
 
-
-
-export const ChoosFileButton = styled.button.attrs({
+export const SubmitButton = styled.button.attrs({
   type: 'submit',
 })`
-  display: flex;
-  align-items: center;
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  background: #997300;
-  border: 0;
-  padding: 3px 10px;
-  margin-top: 7px;
-  margin-bottom: 25px;
-  margin-right: 8px;
-  border-radius: 4px;
-
 
   width: fit-content;
   display: flex;
   justify-content: right;
   align-self: center;
 
-  &:hover {
-      background: ${darken(0.03, '#997300')};
-    }
 
-    span {
-      flex: 1;
-      text-align: center;
-      font-weight: bold;
-      margin: 1px;
-      margin-left: 8px;
-
-    }
-
-`;
-
-
-
-export const SubmitButton = styled.button.attrs({
-  type: 'submit',
-})`
   display: flex;
   align-items: center;
   color: #fff;
@@ -178,12 +146,13 @@ export const SubmitButton = styled.button.attrs({
   font-size: 20px;
   background: #009999;
   border: 0;
-  padding: 3px 16px;
+  padding: 4px 11px;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 8px;
   border-radius: 4px;
   float: right;
+
 
   width: fit-content;
   display: flex;

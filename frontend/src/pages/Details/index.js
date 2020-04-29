@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, InputContainer, FileList, SubmitButton } from './styles';
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaFileUpload } from "react-icons/fa";
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 function Details({ match }) {
@@ -29,21 +30,26 @@ function Details({ match }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    if (!file.name) {
+      toast.error('Failed to upload file');
+    }
+
     const formData = new FormData();
     formData.append('file', file);
 
-    try {
-      const response = await api.post(`files/books/${id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      const { quotes } = response.data
-      setQuoteList([...quotes])
-      setUploadClick(file)
-    } catch {
-      console.log('there was a problem with the server');
-    }
+    const response = await api.post(`files/books/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    const { quotes } = response.data;
+
+    setQuoteList([...quotes]);
+    setUploadClick(file);
+
+    toast.success('File uploaded successfully!');
+
   }
 
   return (
@@ -52,18 +58,18 @@ function Details({ match }) {
         <div >
           {
             book.url_image ?
-            <div>
-              <img src={book.url_image} alt="book"
-                onError={
-                  (e) => {
-                    e.target.onerror = null;
-                    e.target.src = "https://static.thenounproject.com/png/111370-200.png"
-                    e.target.style = 'marginTop: auto; marginLeft: 25px; width: 150px; height: 153px '
-                    e.target.name = 'book.id'
+              <div>
+                <img src={book.url_image} alt="book"
+                  onError={
+                    (e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://static.thenounproject.com/png/111370-200.png"
+                      e.target.style = 'marginTop: auto; marginLeft: 25px; width: 150px; height: 153px '
+                      e.target.name = 'book.id'
+                    }
                   }
-                }
                 />
-                </div>
+              </div>
               :
               <>
                 <img style={{ marginTop: 'auto', marginLeft: '25px', width: '150px', height: '150px' }}
@@ -72,35 +78,51 @@ function Details({ match }) {
                 />
               </>
           }
-          <div>
+          <div style={{ marginTop: '10px' }}>
             <h2> <span>Name:</span> {book.name}</h2>
             <h2> <span>Author:</span> {book.author} </h2>
             <h2> <span>Notes:</span></h2>
-           <p>{book.notes}</p>
+            <p>{book.notes}</p>
 
           </div>
         </div>
       </Container>
 
       <InputContainer>
-        <h2>Insert Kindle Files</h2>
+        <h2>Insert Kindle Notes</h2>
+        <h4>If you have this book on your Kindle, and have its notes file (.xlsx, .csv, .xls, .ods file extensions) you can upload it here
+
+        </h4>
         <div>
-        <input
-          type="file"
-          onChange={handleUpload}
-        />
-        <SubmitButton onClick={handleSubmit}> Upload</SubmitButton>
+          <input
+            type="file"
+            accept=".xlsx,.csv,.xls,.ods"
+            onChange={handleUpload}
+            required
+          />
+          <SubmitButton onClick={handleSubmit}>
+            <FaFileUpload color='#fff' size={22} />
+            <span>Upload</span>
+          </SubmitButton>
         </div>
       </InputContainer>
 
       <FileList>
+
+        {
+          quoteList.quote ?
+              <h1>tei</h1>
+            :
+            <></>
+        }
+
         {
           quoteList ?
-          quoteList.map(quote => (
+            quoteList.map(quote => (
               <li key={quote.id} >{quote.quote}</li>
-          ))
-          :
-          <></>
+            ))
+            :
+            <></>
         }
       </FileList>
 
