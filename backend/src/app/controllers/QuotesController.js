@@ -28,15 +28,16 @@ class QuotesController {
 
     const quotesArray = data.map(quote => quote.__EMPTY_2)
 
-    const removedDuplicatesArray = Array.from(new Set(quotesArray))
+    //removing duplicates
+    const quotes = Array.from(new Set(quotesArray))
 
-    removedDuplicatesArray.map(quote => Quote.create({
+    quotes.map(quote => Quote.create({
       quote,
       book_id: id,
       user_id: req.userId
     }))
 
-    return res.status(201).send();
+    return res.status(201).json({ quotes });
   }
 
   async delete(req, res) {
