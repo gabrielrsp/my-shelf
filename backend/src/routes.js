@@ -29,6 +29,7 @@ routes.post('/books', BookController.store);
 routes.put('/books/:id', BookController.update);
 
 routes.post('/files/books/:id', upload.single('file'), QuotesController.store);
-routes.delete('/books/quotes/:id', QuotesController.delete);
+routes.delete('/books/quotes/:id', QuotesController.deleteOne);
+routes.delete('/books/:id/quotes', QuotesController.deleteAll);
 
 export default routes;

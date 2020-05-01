@@ -173,3 +173,64 @@ export const SubmitButton = styled.button.attrs({
     }
 
 `;
+
+
+export const KindleHeader = styled.div`
+
+display: flex;
+width: 100%;
+justify-content: center;
+
+h1 {
+  color: #009999;
+}
+
+`;
+
+
+
+
+export const DeleteButton = styled.button.attrs({
+  type: 'submit',
+})`
+
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  align-self: center;
+
+
+  display: flex;
+  align-items: center;
+  color: #b30059;
+  font-weight: bold;
+  font-size: 20px;
+  background: #fff;
+  border: 0;
+  padding: 4px 11px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 8px;
+  border-radius: 4px;
+  float: right;
+
+
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  align-self: center;
+
+  &:hover {
+      background: ${darken(0.05, 'rgba(0,0,0,0.1)')};
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      margin: 1px;
+      margin-left: 8px;
+
+    }
+
+`;

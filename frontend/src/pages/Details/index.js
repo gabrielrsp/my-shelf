@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, InputContainer, FileList, SubmitButton } from './styles';
+import { Container, InputContainer, FileList, SubmitButton, DeleteButton, KindleHeader } from './styles';
 import { FaTrash, FaFileUpload } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import api from '../../services/api';
@@ -26,6 +26,19 @@ function Details({ match }) {
 
   const handleUpload = e => {
     setFile(e.target.files[0])
+  }
+
+  async function handleDeleteAll() {
+
+    const confirm = window.confirm("Are you sure you want to delete all notes?")
+
+    if (confirm) {
+
+      await api.delete(`books/${id}/quotes`)
+      setQuoteList([]);
+
+    }
+
   }
 
   const handleSubmit = async e => {
@@ -58,6 +71,7 @@ function Details({ match }) {
         <div >
           {
             book.url_image ?
+
               <div>
                 <img src={book.url_image} alt="book"
                   onError={
@@ -107,22 +121,28 @@ function Details({ match }) {
         </div>
       </InputContainer>
 
+
+      {
+        quoteList.length ?
+          <>
+            <KindleHeader>
+              <h1>Kindle Notes</h1>
+            </KindleHeader>
+            <DeleteButton onClick={handleDeleteAll}>
+              <FaTrash color='#b30059' size={22} />
+              <span>Delete All</span>
+            </DeleteButton>
+          </>
+          : <></>
+
+      }
       <FileList>
 
         {
-          quoteList.quote ?
-              <h1>tei</h1>
-            :
-            <></>
-        }
-
-        {
-          quoteList ?
-            quoteList.map(quote => (
+          quoteList.map(
+            quote => (
               <li key={quote.id} >{quote.quote}</li>
             ))
-            :
-            <></>
         }
       </FileList>
 
