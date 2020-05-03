@@ -37,6 +37,8 @@ function Details({ match }) {
       await api.delete(`books/${id}/quotes`)
       setQuoteList([]);
 
+      toast.success('All Kindle notes removed');
+
     }
 
   }
@@ -47,6 +49,11 @@ function Details({ match }) {
     if (!file.name) {
       toast.error('Failed to upload file');
     }
+
+        if(quoteList.length){
+          toast.error('You already have a kindle note uploaded',{autoClose: 5000})
+          return
+        }
 
     const formData = new FormData();
     formData.append('file', file);

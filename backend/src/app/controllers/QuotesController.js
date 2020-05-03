@@ -69,7 +69,6 @@ class QuotesController {
   }
 
 
-
   async deleteAll(req, res) {
 
     const { id } = req.params;

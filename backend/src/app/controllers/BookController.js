@@ -65,7 +65,6 @@ class BookController {
         {
           model: Quote,
           attributes: ['id', 'quote', 'createdAt', 'updatedAt'],
-          order: ['updated_at']
         }
       ]
 

@@ -44,8 +44,6 @@ export default function Main() {
     const { name, author, notes, url_image } = response.data;
     const newBook = { name, author, url_image, notes }
 
-    console.log(newBook)
-
     setBook([...book, newBook])
 
     setNewName('');
