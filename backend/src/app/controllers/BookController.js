@@ -1,7 +1,10 @@
 import Book from '../models/Book';
 import User from '../models/User';
 import Quote from '../models/Quote';
+
 import * as Yup from 'yup';
+
+import Cache from '../../lib/Cache';
 
 class BookController {
   async store(req, res) {
@@ -26,10 +29,20 @@ class BookController {
       url_image
     });
 
+    if (book) {
+      await Cache.invalidate('books');
+    }
+
     return res.json(book);
   }
 
   async index(req, res) {
+
+    const cached = await Cache.get('books');
+
+    if (cached) {
+      return res.json(cached);
+    }
 
     const books = await Book.findAll({
       attributes: ['id', 'name', 'author', 'notes', 'url_image', 'createdAt', 'updatedAt'],
@@ -43,6 +56,9 @@ class BookController {
       }
 
     });
+
+    await Cache.set('books', books)
+
     return res.json(books);
   }
 
@@ -93,6 +109,8 @@ class BookController {
         }
       });
 
+      await Cache.invalidate('books');
+
       return res.status(200).json({ messsage: 'book removed from database' });
 
     } else {
@@ -123,7 +141,6 @@ class BookController {
       }
     }
 
-
     await book.update(req.body)
 
     book = await Book.update(
@@ -136,6 +153,8 @@ class BookController {
       { where: { id } }
     );
 
+    await Cache.invalidate('books');
+
     return res.json({
       name,
       author,
@@ -144,7 +163,6 @@ class BookController {
     });
 
   }
-
 
 }
 

@@ -65,7 +65,6 @@ class QuotesController {
     } else {
       return res.status(400).json({ error: 'failed to remove quote' });
     }
-
   }
 
 
@@ -73,17 +72,14 @@ class QuotesController {
 
     const { id } = req.params;
     console.log(id)
-      await Quote.destroy({
-        where: {
-          book_id: id,
-          user_id: req.userId
-        }
-      })
+    await Quote.destroy({
+      where: {
+        book_id: id,
+        user_id: req.userId
+      }
+    })
 
-      return res.status(200).json({ messsage: 'All quotes of this book removed from database' });
-
-
-
+    return res.status(200).json({ messsage: 'All quotes of this book removed from database' });
   }
 
 }
