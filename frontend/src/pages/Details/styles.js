@@ -205,7 +205,7 @@ export const DeleteButton = styled.button.attrs({
   color: #b30059;
   font-weight: bold;
   font-size: 20px;
-  background: #fff;
+  background: #F0F0F5;
   border: 0;
   padding: 4px 11px;
   margin-top: 5px;

@@ -15,11 +15,9 @@ export const Wrapper = styled.div`
 
 `;
 
-
 export const Title = styled.div`
 
  margin-top: 30px;
-
 
   strong {
 
@@ -32,8 +30,12 @@ export const Title = styled.div`
 `;
 
 export const Content = styled.div`
+
+margin: auto;
+  display:block;
   width: 100%;
   max-width: 315px;
+  justify-content:center;
   text-align: center;
 
 
