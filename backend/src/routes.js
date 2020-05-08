@@ -1,30 +1,20 @@
 import Router from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
-import Brute from 'express-brute';
-import BruteRedis from 'express-brute-redis';
 
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
-import FileController from './app/controllers/FileController';
 import BookController from './app/controllers/BookController';
 
 import QuotesController from './app/controllers/QuotesController';
-
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 const upload = multer(multerConfig);
 
-const bruteStore = new BruteRedis({
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-});
-
-const bruteForce = new Brute(bruteStore);
 
 routes.post('/users', UserController.store);
-routes.post('/sessions', bruteForce.prevent, SessionController.store);
+routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware); //global middleware valid only for routes below
 

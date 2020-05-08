@@ -1,10 +1,9 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import history from '../../../services/history';
+import api from '../../../services/api';
 
 import { signInSuccess, signFailure } from './actions';
-
-import api from '../../../services/api';
 
 export function* signIn({ payload }) {
   try {
@@ -15,14 +14,22 @@ export function* signIn({ payload }) {
       password
     });
 
-    const { token, user } = response.data;
 
+    const { token, user } = response.data;
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
 
     history.push('/main');
   } catch (err) {
+    const manyreq = err.toString();
+    if (manyreq.includes('429')) {
+      toast.error('You have entered wrong credentials many times. Try again later');
+      yield put(signFailure());
+    }
+
+    else
+
     toast.error('Failed to Authenticate');
     yield put(signFailure());
   }
@@ -47,14 +54,14 @@ export function* signUp({ payload }) {
 }
 
 
-export function setToken({ payload }){
-    if (!payload) return;
+export function setToken({ payload }) {
+  if (!payload) return;
 
-    const { token } = payload.auth;
+  const { token } = payload.auth;
 
-    if(token) {
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-    }
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
 }
 
 export function signOut() {

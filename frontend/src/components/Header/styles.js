@@ -2,11 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
   background: #009999;
   padding: 0 30px;
   border-radius: 4px;
   position: sticky;
   top: 0;
+
+
+
 
   div {
     display: flex;

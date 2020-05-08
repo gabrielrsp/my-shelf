@@ -4,6 +4,9 @@ import * as Yup from 'yup';
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
+import Cache from '../../lib/Cache';
+
+
 class SessionController {
   async store(req, res){
 
@@ -29,6 +32,8 @@ class SessionController {
     }
 
     const { id, name } = user;
+
+    Cache.invalidate('books');
 
     return res.json({
       user: {

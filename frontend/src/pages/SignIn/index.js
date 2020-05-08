@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
+import { motion } from 'framer-motion';
+
 import { signInRequest } from '../../store/modules/auth/actions';
 
 const schema = Yup.object().shape({
@@ -25,6 +27,7 @@ function SignIn() {
 
   return (
     <>
+      <motion.div exit={{ opacity: 0}} animate={{opacity: 1}} initial={{opacity: 0}} >
       <h1>Sign In</h1>
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="email" type="email" placeholder="Email" />
@@ -32,6 +35,7 @@ function SignIn() {
         <button type="submit">{loading ? 'Loading...' : 'Access'}</button>
         <Link to="/register">Create Free Account</Link>
       </Form>
+      </motion.div>
     </>
   );
 }

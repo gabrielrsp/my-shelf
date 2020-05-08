@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { BookList, Container, Form, SubmitButton, UpdateButton } from './styles';
+import { BookList, Container, Form, SubmitButton, UpdateButton, MainBody } from './styles';
 import { FaPlus, FaEdit, FaTimes } from "react-icons/fa";
 import BookItem from '../../components/BookItem';
 import api from '../../services/api';
+import { motion } from 'framer-motion';
 
 export default function Main() {
 
@@ -15,11 +16,15 @@ export default function Main() {
   const [box, setBox] = useState();
   const [idClick, setIdClick] = useState(1);
 
+
   useEffect(() => {
     async function loadBooks() {
+
       const response = await api.get('books');
+      console.log(response.data)
       setBook(response.data)
     }
+
     loadBooks();
 
   }, [idClick])
@@ -144,89 +149,95 @@ export default function Main() {
   const bookSize = useMemo(() => book.length, [book])
 
   return (
-    <>
-      <Container >
-        <h1>Add Book to the Shelf</h1>
+    <MainBody>
+      <motion.div
+        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+      >
+        <Container >
+          <h1>Add Book to the Shelf</h1>
 
-        <Form onSubmit={() => { }}>
-          <input
-            type="text"
-            placeholder="Book Name"
-            value={newName}
-            name="name"
-            onChange={e => setNewName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Author"
-            value={newAuthor}
-            name="author"
-            onChange={e => setNewAuthor(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="URL image"
-            value={newUrl}
-            name="url"
-            onChange={e => setNewUrl(e.target.value)}
-          />
-          <textarea
-            type="text"
-            placeholder="Notes"
-            value={newNotes}
-            name="notes"
-            onChange={e => setNewNotes(e.target.value)}
-          />
+          <Form onSubmit={() => { }}>
+            <input
+              type="text"
+              placeholder="Book Name"
+              value={newName}
+              name="name"
+              onChange={e => setNewName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Author"
+              value={newAuthor}
+              name="author"
+              onChange={e => setNewAuthor(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="URL image"
+              value={newUrl}
+              name="url"
+              onChange={e => setNewUrl(e.target.value)}
+            />
+            <textarea
+              type="text"
+              placeholder="Notes"
+              value={newNotes}
+              name="notes"
+              onChange={e => setNewNotes(e.target.value)}
+            />
 
+            {
+              !box ?
+                <SubmitButton onClick={handleAdd}  >
+                  <FaPlus color='#fff' size={22} />
+                  <span>Add Book</span>
+                </SubmitButton>
+                : <></>
+            }
+
+            {
+              box ?
+                <div>
+                  <UpdateButton onClick={handleUpdate}  >
+                    <FaEdit color='#fff' size={22} />
+                    <span>Save Changes</span>
+                  </UpdateButton>
+
+                  <UpdateButton onClick={handleClean}  >
+                    <FaTimes color='#fff' size={22} />
+                    <span>Cancel</span>
+                  </UpdateButton>
+                </div>
+                :
+                <></>
+            }
+          </Form>
           {
-            !box ?
-              <SubmitButton onClick={handleAdd}  >
-                <FaPlus color='#fff' size={22} />
-                <span>Add Book</span>
-              </SubmitButton>
-              : <></>
-          }
-
-          {
-            box ?
-              <div>
-                <UpdateButton onClick={handleUpdate}  >
-                  <FaEdit color='#fff' size={22} />
-                  <span>Save Changes</span>
-                </UpdateButton>
-
-                <UpdateButton onClick={handleClean}  >
-                  <FaTimes color='#fff' size={22} />
-                  <span>Cancel</span>
-                </UpdateButton>
-              </div>
+            bookSize > 1 || bookSize === 0 ?
+              <h3>You have {bookSize} books</h3>
               :
-              <></>
+              <h3>You have {bookSize} book</h3>
           }
-        </Form>
-        {
-          bookSize > 1 || bookSize === 0 ?
-            <h3>You have {bookSize} books</h3>
-            :
-            <h3>You have {bookSize} book</h3>
-        }
-      </Container>
+        </Container>
 
-      <BookList>
-        {
-          book.map(book => (
-            <>
-              <BookItem
-                key={book.id}
-                book={book}
-                onDelete={() => { handleDelete(book.id) }}
-                onEdit={() => { handleEdit(book.id) }}
-              />
-            </>
-          ))
-        }
-      </BookList>
-    </>
+        <BookList>
+          {
+            book.map(book => (
+              <>
+                <BookItem
+                  key={book.id}
+                  book={book}
+                  onDelete={() => { handleDelete(book.id) }}
+                  onEdit={() => { handleEdit(book.id) }}
+                />
+              </>
+            ))
+          }
+        </BookList>
+      </motion.div>
+    </MainBody>
   );
 
 }

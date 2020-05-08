@@ -1,26 +1,65 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
+
+export const SideInfo = styled.div`
+
+  height: 500px;
+  width: 350px;
+  background: #009999;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: linear-gradient(135deg, #009999, #46ccbf);
+
+
+    div {
+      h1 {
+        color : #fff;
+        text-align:center;
+        margin-top: 115px;
+      }
+      h3 {
+        color : #fff;
+        margin: 60px 10px;
+        text-align:center;
+        padding: 0 5px;
+      }
+
+      p {
+        font-weight: bold;
+        color : #fff;
+        font-size: 16px;
+        margin: 60px 10px;
+        text-align:center;
+        padding: 0 5px;
+      }
+    }
+`;
+
 export const Wrapper = styled.div`
   height: 100%;
-  display: flex;
-  justify-content: center;
+  width: 900px;
+  align-items:center;
+  align-self:center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr 2fr);
+
   align-items: center;
-  background: rgba(0,0,0,0.06);
+  justify-content:center;
+  background: #F0F0F5;
   border: 0;
-  border-radius: 4px;
-  width: 400px;
-  margin: auto;
+  border-radius: 10px;
   margin-top: 30px;
 
 `;
 
 export const Title = styled.div`
 
- margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  text-align: center;
 
   strong {
-
   font-size: 30px;
   margin-top: 30px;
   text-align: center;
@@ -31,7 +70,7 @@ export const Title = styled.div`
 
 export const Content = styled.div`
 
-margin: auto;
+  margin: auto;
   display:block;
   width: 100%;
   max-width: 315px;

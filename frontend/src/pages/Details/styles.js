@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
+
+export const MainBody = styled.body`
+    max-width: 1020px;
+    margin: 0 auto;
+
+`;
+
 export const Container = styled.div`
+
     width: 100%;
     border-radius: 4px;
     box-shadow: 0 0 20px rgba (0, 0, 0.1);
@@ -205,7 +213,7 @@ export const DeleteButton = styled.button.attrs({
   color: #b30059;
   font-weight: bold;
   font-size: 20px;
-  background: #F0F0F5;
+  background: #fff;
   border: 0;
   padding: 4px 11px;
   margin-top: 5px;

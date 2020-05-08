@@ -1,8 +1,15 @@
 import React from 'react';
-import { StyledLink, EditButton, DetailsButton, DeleteButton } from './styles'
+import { StyledLink, EditButton, DetailsButton, DeleteButton } from './styles';
+import { motion } from 'framer-motion';
 
 export default function BookItem({book, onEdit, onDelete }) {
   return (
+    <>
+    <motion.div
+    exit={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+  >
     <li>
     {
     book.url_image ?
@@ -44,5 +51,7 @@ export default function BookItem({book, onEdit, onDelete }) {
         </DeleteButton>
       </div>
   </li>
+  </motion.div>
+  </>
   );
 }

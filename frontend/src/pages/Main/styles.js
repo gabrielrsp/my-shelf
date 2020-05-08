@@ -64,7 +64,18 @@ a {
 
 //////////////////  ADD BOOK FORM  //////////////////////
 
+
+export const MainBody = styled.div`
+    max-width: 1020px;
+    margin: 0 auto;
+
+`;
+
 export const Container = styled.div`
+
+max-width: 1020px;
+    margin: 0 auto;
+
     max-width: 700px;
     border-radius: 4px;
     box-shadow: 0 0 20px rgba (0, 0, 0.1);
