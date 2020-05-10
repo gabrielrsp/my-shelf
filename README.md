@@ -1,24 +1,24 @@
 # My Shelf
 
 This project is build for those who always wanted a place to store the collection of books they have already read, and who always wanted to re-read some of the most remarkable quotes in an easy and quick way, getting only the most important quotes, underlines and annotations from these books.
-Here you can input all the book informations, select an url image for the book, and the most important, you can edit and review your notes easily. 
+Here you can input all the book informations, select an url image for the book, and the most important, you can edit and review your notes easily.
 
 ## Demo
 
 ![](MyShelfDemo.gif)
 
 ## Technologies Used
-  
+
   ### Back End
-  
+
   -  [NodeJS](https://nodejs.org/)
   -  [ExpressJS](https://expressjs.com/)
   -  [Postgres](https://postgresql.org/)
   -  [Sequelize](https://sequelize.org/master/)
   -  [JWT](https://jwt.io/)
-  
-  ### Front End   
-  
+
+  ### Front End
+
   -  [ReactJS](https://reactjs.org/)
   -  [Redux](https://redux.js.org/)
   -  [Redux-Saga](https://redux-saga.js.org/)
@@ -31,25 +31,29 @@ Here you can input all the book informations, select an url image for the book, 
   -  [styled-components](https://www.styled-components.com/)
   -  [React-Icons](https://react-icons.netlify.com/)
   -  [Reactotron](https://infinite.red/reactotron)
-   
+
 
 ## Run Project Locally
 
 First of all, if you don't have postgres, you can try installing postgres docker container, following the steps below
 
 ### Example:
-Assuming you already have docker installed, download the postgres image and set the container parameters
+Assuming you already have docker installed, download the postgres and redis images and set the container parameters
 
-###  Download the image
+###  Download the postgres image
 
-#### `docker run --name myshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
+#### `docker run --name postgresmyshelf -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
+
+###  Download the redis image
+
+#### `docker run --name redismyshelf -p 6379:6379  -d -t redis:alpine`
 
 
-###  Start the container
+###  Start the containers
 
-#### `docker start myshelf`
+#### `docker start postgresmyshelf redismyshelf`
 
-Now, Assuming you already have Node.JS and Yarn, 
+Now, Assuming you already have Node.JS and Yarn,
 
 ### Clone or fork this repository
 
@@ -65,17 +69,33 @@ Now, Assuming you already have Node.JS and Yarn,
 
 You need to set the database environment variables configuration, if you followed the container configuration, you can copy this example:
 
+
+#### `APP_URL=http://localhost:3333`
+#### `NODE_ENV=development`
+
+#### #Auth
+
+#### `APP_SECRET=myshelf`
+
+#### #Database
+
 #### `DB_HOST=localhost`
 #### `DB_USER=postgres`
 #### `DB_PASS=docker`
 #### `DB_NAME=myshelf`
 
-### Rename the file ".env.example" to ".env" 
+#### #Redis
+
+#### `REDIS_HOST=127.0.0.1`
+#### `REDIS_PORT=6379`
+
+
+### Rename the file ".env.example" to ".env"
 
 Now, you need to connect to the database and then create another database with the name you gave in the .env credentials. In this example, the database name is "myshelf". For this step you can use any postgres client interface like PostBird, DBeaver, etc.
 
 
-### Install the sequelize cli dependency 
+### Install the sequelize cli dependency
 
 You need to install the sequelize command line interface as a developer dependency passing the flag "-D" so you can run sequelize commands
 
