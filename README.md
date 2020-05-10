@@ -92,6 +92,8 @@ You need to set the database environment variables configuration, if you followe
 
 ### Rename the file ".env.example" to ".env"
 
+### Connect to database
+
 Now, you need to connect to the database and then create another database with the name you gave in the .env credentials. In this example, the database name is "myshelf". For this step you can use any postgres client interface like PostBird, DBeaver, etc.
 
 
