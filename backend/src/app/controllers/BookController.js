@@ -38,7 +38,8 @@ class BookController {
 
   async index(req, res) {
 
-    const cached = await Cache.get('books');
+    const cacheKey = `user:${req.userId}:books`
+    const cached = await Cache.get(cacheKey);
 
     if (cached) {
       return res.json(cached);
@@ -57,7 +58,7 @@ class BookController {
 
     });
 
-    await Cache.set('books', books)
+    await Cache.set(cacheKey, books)
 
     return res.json(books);
   }

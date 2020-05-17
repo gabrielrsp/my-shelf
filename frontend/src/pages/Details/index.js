@@ -17,11 +17,12 @@ function Details({ match }) {
       const response = await api.get(`books/${id}`)
       setBook(response.data)
       setQuoteList(response.data.Quotes)
+
     }
 
     loadBook();
 
-  }, [id, file, quoteList])
+  }, [id, file, quoteList.length])
 
   const handleUpload = e => {
     setFile(e.target.files[0])

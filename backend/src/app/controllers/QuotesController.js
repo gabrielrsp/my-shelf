@@ -71,7 +71,6 @@ class QuotesController {
   async deleteAll(req, res) {
 
     const { id } = req.params;
-    console.log(id)
     await Quote.destroy({
       where: {
         book_id: id,
