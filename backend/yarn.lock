@@ -2210,9 +2210,9 @@ undefsafe@^2.0.2:
     debug "^2.2.0"
 
 underscore@^1.7.0:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.10.1.tgz#c56f8e088b2ecfdb67fe8efb173dc8bf871930bf"
-  integrity sha512-F3pVQ4LXjynIZ3k3RXX/aOc2ygsNuo7KIYANTS9RcR8LXSooYBEtbg3hCGhOgRr5+em9eluV2wUwcgVa984eIw==
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.1.tgz#0c1c6bd2df54b6b69f2314066d65b6cde6fcf9d1"
+  integrity sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==
 
 unique-string@^1.0.0:
   version "1.0.0"
